@@ -9,8 +9,8 @@ import PageHero from '../components/PageHero.astro'
     title="Cabañas"
     subtitle="Alojamiento"
     description="6 cabañas de madera rodeadas de naturaleza, con todo lo que necesitás. Pet Friendly y abierto todo el año."
-    image="https://images.unsplash.com/photo-1587061949409-02df41d5e562?w=1400&q=80"
-    imageAlt="Cabañas de madera"
+    image="/img/cabana-exterior.jpg"
+    imageAlt="Cabaña de madera en Finca Las Cuevas"
   />
 
   <!-- Info -->
@@ -50,12 +50,12 @@ import PageHero from '../components/PageHero.astro'
       <!-- Cabañas grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-12" data-stagger>
         {[
-          'https://images.unsplash.com/photo-1587061949409-02df41d5e562?w=600&q=80',
-          'https://images.unsplash.com/photo-1618767689160-da3fb810aad7?w=600&q=80',
-          'https://images.unsplash.com/photo-1596178065887-1198b6148b2b?w=600&q=80',
-          'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80',
-          'https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=600&q=80',
-          'https://images.unsplash.com/photo-1602002418816-5c0aeef426aa?w=600&q=80',
+          '/img/cabana-exterior.jpg',
+          '/img/cabanas-vista.jpg',
+          '/img/vinedo-hileras.jpg',
+          '/img/senderismo-bosque.jpg',
+          '/img/kayak-humedal.jpg',
+          '/img/vendimia-gabriel.jpg',
         ].map((img, i) => (
           <div data-animate="scale" class="group relative aspect-[4/3] overflow-hidden">
             <img src={img} alt={`Cabaña ${i + 1}`} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />

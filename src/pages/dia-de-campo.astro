@@ -9,8 +9,8 @@ import PageHero from '../components/PageHero.astro'
     title="Día de Campo"
     subtitle="Experiencia"
     description="Un día completo en la finca: asado, vinos artesanales, viñedo y la mejor compañía."
-    image="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=1400&q=80"
-    imageAlt="Degustación de vino"
+    image="/img/dia-campo-visita.jpg"
+    imageAlt="Visitantes en el viñedo de Finca Las Cuevas"
   />
 
   <!-- Timeline -->
@@ -68,7 +68,7 @@ import PageHero from '../components/PageHero.astro'
   <section class="bg-cream">
     <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2">
       <div class="aspect-square lg:aspect-auto overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=800&q=80" alt="Vendimia" class="w-full h-full object-cover" loading="lazy" />
+        <img src="/img/vendimia-uvas.jpg" alt="Cosecha de uvas Marcelán" class="w-full h-full object-cover" loading="lazy" />
       </div>
       <div class="flex items-center px-6 lg:px-16 py-16 lg:py-24">
         <div>
@@ -97,12 +97,12 @@ import PageHero from '../components/PageHero.astro'
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-2 md:grid-cols-3 gap-2" data-stagger>
         {[
-          'https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=500&q=80',
-          'https://images.unsplash.com/photo-1560493676-04071c5f467b?w=500&q=80',
-          'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=500&q=80',
-          'https://images.unsplash.com/photo-1528823872057-9c018a7a7553?w=500&q=80',
-          'https://images.unsplash.com/photo-1504279577054-acfeccf8fc52?w=500&q=80',
-          'https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea?w=500&q=80',
+          '/img/vendimia-gabriel.jpg',
+          '/img/vendimia-cosecha.jpg',
+          '/img/gabriel-botella.jpg',
+          '/img/vendimia-joven.jpg',
+          '/img/vinedo-hileras.jpg',
+          '/img/gabriel-vinedo.jpg',
         ].map((img, i) => (
           <div data-animate="scale" class="aspect-square overflow-hidden">
             <img src={img} alt={`Momento en la finca ${i + 1}`} class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
