@@ -4,115 +4,140 @@ import Layout from '../layouts/Layout.astro'
 
 <Layout title="Inicio">
 
-  <!-- Hero -->
-  <section class="relative h-dvh flex items-end overflow-hidden">
-    <img
-      src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=1600&q=80"
-      alt="Viñedo al atardecer"
-      class="absolute inset-0 w-full h-full object-cover"
-    />
-    <div class="absolute inset-0 bg-charcoal/40"></div>
+  <div id="video-zone" class="relative bg-charcoal">
 
-    <div class="relative z-10 w-full px-6 lg:px-8 pb-16 md:pb-24 max-w-6xl mx-auto">
-      <span class="text-sand-light/80 text-xs uppercase tracking-[0.3em] font-medium">Las Cuevas, Entre Ríos</span>
-      <h1 class="font-display text-5xl md:text-7xl lg:text-8xl text-cream font-semibold italic mt-3 leading-[1.05]">
-        Finca<br>Las Cuevas
-      </h1>
-      <p class="text-cream/70 text-lg md:text-xl mt-5 max-w-lg leading-relaxed">
-        Viñedo, cabañas y ecoturismo. Portal de entrada al Sitio Ramsar Delta del Paraná.
-      </p>
-      <div class="flex flex-wrap gap-4 mt-8">
-        <a href="/cabanas" class="bg-cream text-charcoal px-7 py-3.5 text-sm font-semibold uppercase tracking-wider hover:bg-white transition-colors duration-300">
-          Ver Cabañas
-        </a>
-        <a href="/contacto" class="border border-cream/40 text-cream px-7 py-3.5 text-sm font-semibold uppercase tracking-wider hover:border-cream hover:bg-cream/10 transition-all duration-300">
-          Contacto
-        </a>
+    <!-- Video background (sticky, scrolls within video-zone) -->
+    <div id="video-bg" class="absolute inset-0 pointer-events-none overflow-clip">
+      <div class="sticky top-0 h-dvh">
+        <video
+          id="bg-video"
+          src="/wine-pour.mp4"
+          poster="/wine-pour-poster.jpg"
+          muted
+          playsinline
+          preload="auto"
+          class="absolute inset-0 w-full h-full object-cover"
+        ></video>
+        <div id="video-overlay" class="absolute inset-0 bg-charcoal/40"></div>
       </div>
     </div>
-  </section>
 
-  <!-- Intro -->
-  <section class="py-24 md:py-32 px-6 lg:px-8">
-    <div class="max-w-3xl mx-auto text-center">
-      <span class="text-earth text-xs uppercase tracking-[0.25em] font-semibold">Desde 2013</span>
-      <h2 class="font-display text-3xl md:text-5xl text-charcoal font-semibold italic mt-4 leading-tight">
-        Un rincón donde el tiempo se detiene
-      </h2>
-      <p class="text-charcoal-light/70 text-lg leading-relaxed mt-6">
-        Finca Las Cuevas es mucho más que un viñedo. Es Gabriel recibiéndote con un asado, una guía nativa llevándote por el bosque, el silencio del delta y más de 350 especies de aves. A pasos del Parque Nacional Predelta, somos Pet Friendly y estamos abiertos todo el año.
-      </p>
+    <!-- Content (scrolls over the sticky video) -->
+    <div class="relative z-10">
+
+      <!-- Hero -->
+      <section class="relative h-dvh flex items-end overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-charcoal/50 via-transparent to-transparent"></div>
+
+        <div class="relative z-10 w-full px-6 lg:px-8 pb-16 md:pb-24 max-w-6xl mx-auto">
+          <span data-hero-animate="1" class="text-sand-light/80 text-xs uppercase tracking-[0.3em] font-medium">Las Cuevas, Entre Ríos</span>
+          <h1 data-hero-animate="2" class="font-display text-5xl md:text-7xl lg:text-8xl text-cream font-semibold italic mt-3 leading-[1.05] drop-shadow-lg">
+            Finca<br>Las Cuevas
+          </h1>
+          <p data-hero-animate="3" class="text-cream/80 text-lg md:text-xl mt-5 max-w-lg leading-relaxed">
+            Viñedo, cabañas y ecoturismo. Portal de entrada al Sitio Ramsar Delta del Paraná.
+          </p>
+          <div data-hero-animate="4" class="flex flex-wrap gap-4 mt-8">
+            <a href="/cabanas" class="bg-cream text-charcoal px-7 py-3.5 text-sm font-semibold uppercase tracking-wider hover:bg-white transition-colors duration-300">
+              Ver Cabañas
+            </a>
+            <a href="/contacto" class="border border-cream/40 text-cream px-7 py-3.5 text-sm font-semibold uppercase tracking-wider hover:border-cream hover:bg-cream/10 transition-all duration-300">
+              Contacto
+            </a>
+          </div>
+        </div>
+
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 animate-bounce opacity-30">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-cream">
+            <path d="M7 13l5 5 5-5M7 6l5 5 5-5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </section>
+
+      <!-- Intro -->
+      <section class="py-24 md:py-32 px-6 lg:px-8 bg-wine-dark/30 backdrop-blur-[1px]">
+        <div class="max-w-3xl mx-auto text-center">
+          <span data-animate class="text-wine-light text-xs uppercase tracking-[0.25em] font-semibold">Desde 2013</span>
+          <h2 data-animate class="font-display text-3xl md:text-5xl text-cream font-semibold italic mt-4 leading-tight">
+            Un rincón donde el tiempo se detiene
+          </h2>
+          <p data-animate class="text-cream/70 text-lg leading-relaxed mt-6">
+            Finca Las Cuevas es mucho más que un viñedo. Es Gabriel recibiéndote con un asado, una guía nativa llevándote por el bosque, el silencio del delta y más de 350 especies de aves. A pasos del Parque Nacional Predelta, somos Pet Friendly y estamos abiertos todo el año.
+          </p>
+        </div>
+      </section>
+
+      <!-- Experiencias — grid asimétrico -->
+      <section class="px-6 lg:px-8 pb-24 md:pb-32 pt-8">
+        <div class="max-w-6xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-4" data-stagger>
+
+            <a data-animate="scale" href="/cabanas" class="group md:col-span-7 relative aspect-[4/3] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1587061949409-02df41d5e562?w=900&q=80" alt="Cabaña de madera" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-charcoal/30 group-hover:bg-charcoal/40 transition-colors duration-500"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                <span class="text-cream/60 text-xs uppercase tracking-[0.2em]">Alojamiento</span>
+                <h3 class="font-display text-2xl md:text-3xl text-cream font-semibold italic mt-1">Cabañas</h3>
+                <p class="text-cream/60 text-sm mt-2 max-w-xs">6 cabañas de madera con pileta, quincho y parrillero. Pet Friendly.</p>
+              </div>
+            </a>
+
+            <a data-animate="scale" href="/senderismo" class="group md:col-span-5 relative aspect-[4/3] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80" alt="Sendero en el bosque" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-charcoal/30 group-hover:bg-charcoal/40 transition-colors duration-500"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                <span class="text-cream/60 text-xs uppercase tracking-[0.2em]">Naturaleza</span>
+                <h3 class="font-display text-2xl md:text-3xl text-cream font-semibold italic mt-1">Senderismo</h3>
+                <p class="text-cream/60 text-sm mt-2 max-w-xs">Recorridos guiados por el bosque nativo, la Cueva del Tigre y el bosque energético.</p>
+              </div>
+            </a>
+
+            <a data-animate="scale" href="/dia-de-campo" class="group md:col-span-5 relative aspect-[4/3] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&q=80" alt="Copa de vino en viñedo" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-charcoal/30 group-hover:bg-charcoal/40 transition-colors duration-500"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                <span class="text-cream/60 text-xs uppercase tracking-[0.2em]">Experiencia</span>
+                <h3 class="font-display text-2xl md:text-3xl text-cream font-semibold italic mt-1">Día de Campo</h3>
+                <p class="text-cream/60 text-sm mt-2 max-w-xs">Asado, vinos artesanales y viñedo con Gabriel.</p>
+              </div>
+            </a>
+
+            <a data-animate="scale" href="/actividades" class="group md:col-span-7 relative aspect-[4/3] overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1572697256681-3b428f0e44a0?w=900&q=80" alt="Kayak en el río" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+              <div class="absolute inset-0 bg-charcoal/30 group-hover:bg-charcoal/40 transition-colors duration-500"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                <span class="text-cream/60 text-xs uppercase tracking-[0.2em]">Aventura</span>
+                <h3 class="font-display text-2xl md:text-3xl text-cream font-semibold italic mt-1">Actividades</h3>
+                <p class="text-cream/60 text-sm mt-2 max-w-xs">Kayak, pesca, ecoturismo, avistaje de aves y más.</p>
+              </div>
+            </a>
+
+          </div>
+        </div>
+      </section>
+
     </div>
-  </section>
-
-  <!-- Experiencias — grid asimétrico -->
-  <section class="px-6 lg:px-8 pb-24 md:pb-32">
-    <div class="max-w-6xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-4">
-
-        <a href="/cabanas" class="group md:col-span-7 relative aspect-[4/3] overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1587061949409-02df41d5e562?w=900&q=80" alt="Cabaña de madera" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-          <div class="absolute inset-0 bg-charcoal/30 group-hover:bg-charcoal/40 transition-colors duration-500"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-            <span class="text-cream/60 text-xs uppercase tracking-[0.2em]">Alojamiento</span>
-            <h3 class="font-display text-2xl md:text-3xl text-cream font-semibold italic mt-1">Cabañas</h3>
-            <p class="text-cream/60 text-sm mt-2 max-w-xs">6 cabañas de madera con pileta, quincho y parrillero. Pet Friendly.</p>
-          </div>
-        </a>
-
-        <a href="/senderismo" class="group md:col-span-5 relative aspect-[4/3] overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80" alt="Sendero en el bosque" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-          <div class="absolute inset-0 bg-charcoal/30 group-hover:bg-charcoal/40 transition-colors duration-500"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-            <span class="text-cream/60 text-xs uppercase tracking-[0.2em]">Naturaleza</span>
-            <h3 class="font-display text-2xl md:text-3xl text-cream font-semibold italic mt-1">Senderismo</h3>
-            <p class="text-cream/60 text-sm mt-2 max-w-xs">Recorridos guiados por el bosque nativo, la Cueva del Tigre y el bosque energético.</p>
-          </div>
-        </a>
-
-        <a href="/dia-de-campo" class="group md:col-span-5 relative aspect-[4/3] overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&q=80" alt="Copa de vino en viñedo" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-          <div class="absolute inset-0 bg-charcoal/30 group-hover:bg-charcoal/40 transition-colors duration-500"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-            <span class="text-cream/60 text-xs uppercase tracking-[0.2em]">Experiencia</span>
-            <h3 class="font-display text-2xl md:text-3xl text-cream font-semibold italic mt-1">Día de Campo</h3>
-            <p class="text-cream/60 text-sm mt-2 max-w-xs">Asado, vinos artesanales y viñedo con Gabriel.</p>
-          </div>
-        </a>
-
-        <a href="/actividades" class="group md:col-span-7 relative aspect-[4/3] overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1572697256681-3b428f0e44a0?w=900&q=80" alt="Kayak en el río" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-          <div class="absolute inset-0 bg-charcoal/30 group-hover:bg-charcoal/40 transition-colors duration-500"></div>
-          <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-            <span class="text-cream/60 text-xs uppercase tracking-[0.2em]">Aventura</span>
-            <h3 class="font-display text-2xl md:text-3xl text-cream font-semibold italic mt-1">Actividades</h3>
-            <p class="text-cream/60 text-sm mt-2 max-w-xs">Kayak, pesca, ecoturismo, avistaje de aves y más.</p>
-          </div>
-        </a>
-
-      </div>
-    </div>
-  </section>
+  </div>
 
   <!-- Gabriel -->
-  <section class="bg-cream">
+  <section class="bg-charcoal text-cream">
     <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2">
-      <div class="aspect-square lg:aspect-auto overflow-hidden">
+      <div class="aspect-square lg:aspect-auto overflow-hidden" data-animate="image">
         <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800&q=80" alt="Gabriel en la finca" class="w-full h-full object-cover" loading="lazy" />
       </div>
       <div class="flex items-center px-6 lg:px-16 py-16 lg:py-24">
         <div>
-          <span class="text-earth text-xs uppercase tracking-[0.25em] font-semibold">Nuestra historia</span>
-          <h2 class="font-display text-3xl md:text-4xl text-charcoal font-semibold italic mt-3 leading-tight">
+          <span data-animate class="text-wine-light text-xs uppercase tracking-[0.25em] font-semibold">Nuestra historia</span>
+          <h2 data-animate class="font-display text-3xl md:text-4xl text-cream font-semibold italic mt-3 leading-tight">
             Conocé a Gabriel
           </h2>
-          <p class="text-charcoal-light/70 leading-relaxed mt-5">
+          <p data-animate class="text-cream/70 leading-relaxed mt-5">
             Gabriel Basaldella es el alma de Finca Las Cuevas. Desde 2013 vive en la finca, te recibe personalmente, te cocina un asado inolvidable y te cuenta con pasión todo sobre el proceso artesanal de sus vinos.
           </p>
-          <p class="text-charcoal-light/70 leading-relaxed mt-4">
+          <p data-animate class="text-cream/70 leading-relaxed mt-4">
             Acá no hay experiencia impersonal. Cada visita es única, cada plato está hecho con dedicación, y cada botella de RIOMIO cuenta una historia.
           </p>
-          <a href="/dia-de-campo" class="inline-block mt-8 text-wine text-sm font-semibold uppercase tracking-[0.15em] border-b-2 border-wine/30 pb-1 hover:border-wine transition-colors duration-300">
+          <a data-animate href="/dia-de-campo" class="inline-block mt-8 text-cream text-sm font-semibold uppercase tracking-[0.15em] border-b-2 border-cream/30 pb-1 hover:border-cream transition-colors duration-300">
             Viví la experiencia
           </a>
         </div>
@@ -125,18 +150,18 @@ import Layout from '../layouts/Layout.astro'
     <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2">
       <div class="flex items-center px-6 lg:px-16 py-16 lg:py-24 order-2 lg:order-1">
         <div>
-          <span class="text-sand/60 text-xs uppercase tracking-[0.25em] font-semibold">Vino RIOMIO</span>
-          <h2 class="font-display text-3xl md:text-4xl font-semibold italic mt-3 leading-tight">
+          <span data-animate class="text-sand/60 text-xs uppercase tracking-[0.25em] font-semibold">Vino RIOMIO</span>
+          <h2 data-animate class="font-display text-3xl md:text-4xl font-semibold italic mt-3 leading-tight">
             Vino artesanal con identidad
           </h2>
-          <p class="text-cream/60 leading-relaxed mt-5">
+          <p data-animate class="text-cream/60 leading-relaxed mt-5">
             Cuatro variedades de uva — Chardonnay, Marcelán, Malbec y Syrah — trabajadas de forma completamente artesanal. Desde la poda hasta la botella, cada paso es manual.
           </p>
-          <p class="text-cream/60 leading-relaxed mt-4">
+          <p data-animate class="text-cream/60 leading-relaxed mt-4">
             En enero y febrero podés participar de la vendimia y vivir de cerca todo el proceso. También elaboramos espumante artesanal que solo se puede disfrutar en la finca.
           </p>
 
-          <div class="flex gap-12 mt-10">
+          <div data-animate class="flex gap-12 mt-10">
             <div>
               <span class="font-display text-4xl italic text-sand">4</span>
               <p class="text-cream/40 text-xs uppercase tracking-wider mt-1">Variedades</p>
@@ -152,30 +177,82 @@ import Layout from '../layouts/Layout.astro'
           </div>
         </div>
       </div>
-      <div class="aspect-square lg:aspect-auto overflow-hidden order-1 lg:order-2">
+      <div class="aspect-square lg:aspect-auto overflow-hidden order-1 lg:order-2" data-animate="image">
         <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=800&q=80" alt="Viñedo" class="w-full h-full object-cover" loading="lazy" />
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="py-24 md:py-32 px-6 lg:px-8 text-center">
+  <section class="py-24 md:py-32 px-6 lg:px-8 text-center bg-wine-dark">
     <div class="max-w-2xl mx-auto">
-      <h2 class="font-display text-3xl md:text-5xl text-charcoal font-semibold italic leading-tight">
+      <h2 data-animate class="font-display text-3xl md:text-5xl text-cream font-semibold italic leading-tight">
         ¿Te gustaría visitarnos?
       </h2>
-      <p class="text-charcoal-light/60 text-lg mt-5">
+      <p data-animate class="text-cream/60 text-lg mt-5">
         Consultanos disponibilidad de cabañas, coordiná tu día de campo, o simplemente vení a disfrutar del viñedo. Estamos abiertos todo el año.
       </p>
       <a
         href="https://wa.me/5493414022323?text=Hola!%20Quiero%20consultar%20sobre%20Finca%20Las%20Cuevas"
         target="_blank"
         rel="noopener"
-        class="inline-block mt-8 bg-wine text-cream px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-wine-dark transition-colors duration-300"
+        class="inline-block mt-8 bg-cream text-charcoal px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-white transition-colors duration-300"
       >
         Escribinos por WhatsApp
       </a>
     </div>
   </section>
+
+  <script>
+    import gsap from 'gsap'
+    import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+    gsap.registerPlugin(ScrollTrigger)
+
+    const video = document.getElementById('bg-video') as HTMLVideoElement
+    const videoBg = document.getElementById('video-bg')
+
+    if (video && videoBg) {
+      // Force video load on mobile
+      video.load()
+
+      const initScrollAnimation = () => {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+        video.pause()
+
+        // Scrub video playback with scroll (extended range so video
+        // is still mid-pour when the fade-out completes)
+        gsap.to(video, {
+          currentTime: video.duration,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '#video-zone',
+            start: 'top top',
+            end: 'bottom+=60% bottom',
+            scrub: 0.3,
+          },
+        })
+
+        // Fade out video at end of video zone
+        gsap.to(videoBg, {
+          opacity: 0,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: '#video-zone',
+            start: '75% center',
+            end: 'bottom center',
+            scrub: true,
+          },
+        })
+      }
+
+      if (video.readyState >= 1) {
+        initScrollAnimation()
+      } else {
+        video.addEventListener('loadedmetadata', initScrollAnimation, { once: true })
+      }
+    }
+  </script>
 
 </Layout>

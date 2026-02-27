@@ -16,8 +16,8 @@ import PageHero from '../components/PageHero.astro'
   <!-- Timeline -->
   <section class="py-24 md:py-32 px-6 lg:px-8">
     <div class="max-w-3xl mx-auto">
-      <span class="text-earth text-xs uppercase tracking-[0.25em] font-semibold">La experiencia</span>
-      <h2 class="font-display text-3xl md:text-4xl text-charcoal font-semibold italic mt-3">
+      <span data-animate class="text-earth text-xs uppercase tracking-[0.25em] font-semibold">La experiencia</span>
+      <h2 data-animate class="font-display text-3xl md:text-4xl text-charcoal font-semibold italic mt-3">
         Un día para recordar
       </h2>
 
@@ -49,7 +49,7 @@ import PageHero from '../components/PageHero.astro'
             desc: 'Pileta, árboles frutales, silencio. Descansá, recorré los alrededores entre caballos y vacas, o simplemente desconectá rodeado de campo.',
           },
         ].map((item, i) => (
-          <div class="flex gap-8">
+          <div data-animate class="flex gap-8">
             <div class="flex flex-col items-center shrink-0">
               <span class="font-display text-xl italic text-wine w-10 text-center">{item.step}</span>
               {i < 4 && <div class="w-px flex-1 bg-sand mt-3"></div>}
@@ -72,11 +72,11 @@ import PageHero from '../components/PageHero.astro'
       </div>
       <div class="flex items-center px-6 lg:px-16 py-16 lg:py-24">
         <div>
-          <span class="text-earth text-xs uppercase tracking-[0.25em] font-semibold">Enero y Febrero</span>
-          <h2 class="font-display text-3xl md:text-4xl text-charcoal font-semibold italic mt-3 leading-tight">
+          <span data-animate class="text-earth text-xs uppercase tracking-[0.25em] font-semibold">Enero y Febrero</span>
+          <h2 data-animate class="font-display text-3xl md:text-4xl text-charcoal font-semibold italic mt-3 leading-tight">
             Participá de la vendimia
           </h2>
-          <p class="text-charcoal-light/70 leading-relaxed mt-5">
+          <p data-animate class="text-charcoal-light/70 leading-relaxed mt-5">
             En pleno verano, podés sumarte a la cosecha de uvas y vivir de cerca todo el proceso: desde cortar los racimos hasta la molienda y el prensado. Una experiencia que hacemos con amigos y familia desde 2013.
           </p>
           <a
@@ -95,7 +95,7 @@ import PageHero from '../components/PageHero.astro'
   <!-- Gallery -->
   <section class="px-6 lg:px-8 py-24 md:py-32">
     <div class="max-w-6xl mx-auto">
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-2" data-stagger>
         {[
           'https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=500&q=80',
           'https://images.unsplash.com/photo-1560493676-04071c5f467b?w=500&q=80',
@@ -104,7 +104,7 @@ import PageHero from '../components/PageHero.astro'
           'https://images.unsplash.com/photo-1504279577054-acfeccf8fc52?w=500&q=80',
           'https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea?w=500&q=80',
         ].map((img, i) => (
-          <div class="aspect-square overflow-hidden">
+          <div data-animate="scale" class="aspect-square overflow-hidden">
             <img src={img} alt={`Momento en la finca ${i + 1}`} class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
           </div>
         ))}
@@ -115,7 +115,7 @@ import PageHero from '../components/PageHero.astro'
   <!-- CTA -->
   <section class="py-20 px-6 lg:px-8 bg-cream text-center">
     <div class="max-w-2xl mx-auto">
-      <h2 class="font-display text-2xl md:text-3xl text-charcoal font-semibold italic">¿Querés vivir el Día de Campo?</h2>
+      <h2 data-animate class="font-display text-2xl md:text-3xl text-charcoal font-semibold italic">¿Querés vivir el Día de Campo?</h2>
       <p class="text-charcoal-light/60 mt-3">Coordiná fecha y grupo. Te organizamos todo.</p>
       <a
         href="https://wa.me/5493414022323?text=Hola!%20Quiero%20consultar%20sobre%20el%20Día%20de%20Campo"

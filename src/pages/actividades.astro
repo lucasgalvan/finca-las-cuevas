@@ -43,7 +43,7 @@ import PageHero from '../components/PageHero.astro'
           image: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=800&q=80',
         },
       ].map((activity, i) => (
-        <div class={`grid grid-cols-1 lg:grid-cols-2`}>
+        <div data-animate class={`grid grid-cols-1 lg:grid-cols-2`}>
           <div class={`aspect-[4/3] lg:aspect-auto overflow-hidden ${i % 2 !== 0 ? 'lg:order-2' : ''}`}>
             <img src={activity.image} alt={activity.title} class="w-full h-full object-cover" loading="lazy" />
           </div>
@@ -63,9 +63,9 @@ import PageHero from '../components/PageHero.astro'
   <!-- Sitio Ramsar -->
   <section class="py-20 px-6 lg:px-8 bg-olive/10">
     <div class="max-w-3xl mx-auto text-center">
-      <span class="text-olive text-xs uppercase tracking-[0.25em] font-semibold">Sitio Ramsar</span>
-      <h2 class="font-display text-2xl md:text-3xl text-charcoal font-semibold italic mt-3">Portal al Delta del Paraná</h2>
-      <p class="text-charcoal-light/60 leading-relaxed mt-4">
+      <span data-animate class="text-olive text-xs uppercase tracking-[0.25em] font-semibold">Sitio Ramsar</span>
+      <h2 data-animate class="font-display text-2xl md:text-3xl text-charcoal font-semibold italic mt-3">Portal al Delta del Paraná</h2>
+      <p data-animate class="text-charcoal-light/60 leading-relaxed mt-4">
         Las Cuevas es reconocida como portal de entrada al Sitio Ramsar Delta del Paraná: 243.000 hectáreas de humedal de importancia internacional. Un mosaico de islas, ríos y biodiversidad entre Entre Ríos y Santa Fe, que incluye los parques nacionales Pre-Delta e Islas de Santa Fe.
       </p>
     </div>
@@ -74,8 +74,8 @@ import PageHero from '../components/PageHero.astro'
   <!-- CTA -->
   <section class="py-20 px-6 lg:px-8 bg-cream text-center">
     <div class="max-w-2xl mx-auto">
-      <h2 class="font-display text-2xl md:text-3xl text-charcoal font-semibold italic">¿Qué actividad te gustaría hacer?</h2>
-      <p class="text-charcoal-light/60 mt-3">Contanos qué te interesa y te armamos la experiencia perfecta.</p>
+      <h2 data-animate class="font-display text-2xl md:text-3xl text-charcoal font-semibold italic">¿Qué actividad te gustaría hacer?</h2>
+      <p data-animate class="text-charcoal-light/60 mt-3">Contanos qué te interesa y te armamos la experiencia perfecta.</p>
       <a
         href="https://wa.me/5493414022323?text=Hola!%20Quiero%20consultar%20sobre%20actividades"
         target="_blank"

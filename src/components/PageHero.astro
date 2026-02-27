@@ -18,8 +18,8 @@ const { title, subtitle, description, image, imageAlt = '' } = Astro.props
   />
   <div class="absolute inset-0 bg-charcoal/40"></div>
   <div class="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-8 pb-12 md:pb-16">
-    {subtitle && <span class="text-cream/60 text-xs uppercase tracking-[0.3em] font-medium">{subtitle}</span>}
-    <h1 class="font-display text-4xl md:text-6xl text-cream font-semibold italic mt-2">{title}</h1>
-    {description && <p class="text-cream/60 text-lg mt-3 max-w-lg">{description}</p>}
+    {subtitle && <span data-hero-animate="1" class="text-cream/60 text-xs uppercase tracking-[0.3em] font-medium">{subtitle}</span>}
+    <h1 data-hero-animate="2" class="font-display text-4xl md:text-6xl text-cream font-semibold italic mt-2">{title}</h1>
+    {description && <p data-hero-animate="3" class="text-cream/60 text-lg mt-3 max-w-lg">{description}</p>}
   </div>
 </section>

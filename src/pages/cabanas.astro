@@ -17,16 +17,16 @@ import PageHero from '../components/PageHero.astro'
   <section class="py-24 md:py-32 px-6 lg:px-8">
     <div class="max-w-6xl mx-auto">
       <div class="max-w-2xl">
-        <span class="text-earth text-xs uppercase tracking-[0.25em] font-semibold">Comodidades</span>
-        <h2 class="font-display text-3xl md:text-4xl text-charcoal font-semibold italic mt-3">
+        <span data-animate class="text-earth text-xs uppercase tracking-[0.25em] font-semibold">Comodidades</span>
+        <h2 data-animate class="font-display text-3xl md:text-4xl text-charcoal font-semibold italic mt-3">
           Tu refugio en la naturaleza
         </h2>
-        <p class="text-charcoal-light/70 leading-relaxed mt-4">
+        <p data-animate class="text-charcoal-light/70 leading-relaxed mt-4">
           Cada cabaña lleva el nombre de nuestra flora autóctona. Están equipadas para tu comodidad en cualquier época del año, con capacidad para 2, 4 y hasta 6 personas.
         </p>
       </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-12">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-12" data-stagger>
         {[
           'Aire acondicionado',
           'Calefacción',
@@ -37,18 +37,18 @@ import PageHero from '../components/PageHero.astro'
           'Ropa de cama y toallas',
           'WiFi',
         ].map(item => (
-          <div class="p-5 bg-cream">
+          <div data-animate class="p-5 bg-cream">
             <p class="text-charcoal text-sm font-medium">{item}</p>
           </div>
         ))}
       </div>
 
-      <div class="mt-6 p-5 bg-olive/10 inline-block">
+      <div data-animate class="mt-6 p-5 bg-olive/10 inline-block">
         <p class="text-olive text-sm font-semibold">Pet Friendly — Vení con tu mascota</p>
       </div>
 
       <!-- Cabañas grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-12" data-stagger>
         {[
           'https://images.unsplash.com/photo-1587061949409-02df41d5e562?w=600&q=80',
           'https://images.unsplash.com/photo-1618767689160-da3fb810aad7?w=600&q=80',
@@ -57,7 +57,7 @@ import PageHero from '../components/PageHero.astro'
           'https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=600&q=80',
           'https://images.unsplash.com/photo-1602002418816-5c0aeef426aa?w=600&q=80',
         ].map((img, i) => (
-          <div class="group relative aspect-[4/3] overflow-hidden">
+          <div data-animate="scale" class="group relative aspect-[4/3] overflow-hidden">
             <img src={img} alt={`Cabaña ${i + 1}`} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
             <div class="absolute inset-0 bg-charcoal/20 group-hover:bg-charcoal/30 transition-colors duration-500"></div>
             <div class="absolute bottom-0 left-0 p-5">
@@ -72,8 +72,8 @@ import PageHero from '../components/PageHero.astro'
   <!-- CTA -->
   <section class="py-20 px-6 lg:px-8 bg-cream text-center">
     <div class="max-w-2xl mx-auto">
-      <h2 class="font-display text-2xl md:text-3xl text-charcoal font-semibold italic">¿Querés reservar una cabaña?</h2>
-      <p class="text-charcoal-light/60 mt-3">Escribinos por WhatsApp y te contamos disponibilidad y tarifas.</p>
+      <h2 data-animate class="font-display text-2xl md:text-3xl text-charcoal font-semibold italic">¿Querés reservar una cabaña?</h2>
+      <p data-animate class="text-charcoal-light/60 mt-3">Escribinos por WhatsApp y te contamos disponibilidad y tarifas.</p>
       <a
         href="https://wa.me/5493414022323?text=Hola!%20Quiero%20consultar%20disponibilidad%20de%20cabañas"
         target="_blank"
