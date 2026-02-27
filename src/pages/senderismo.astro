@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro'
+import PageHero from '../components/PageHero.astro'
+---
+
+<Layout title="Senderismo" description="Recorridos guiados por el bosque nativo de Finca Las Cuevas con Sandra.">
+
+  <PageHero
+    title="Senderismo"
+    subtitle="Naturaleza"
+    description="Recorridos guiados por el bosque nativo con Sandra, experta en flora y fauna de la región."
+    image="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1400&q=80"
+    imageAlt="Bosque nativo"
+  />
+
+  <!-- Content -->
+  <section class="py-24 md:py-32 px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+
+      <div>
+        <span class="text-earth text-xs uppercase tracking-[0.25em] font-semibold">El recorrido</span>
+        <h2 class="font-display text-3xl md:text-4xl text-charcoal font-semibold italic mt-3 leading-tight">
+          Descubrí el bosque nativo
+        </h2>
+        <p class="text-charcoal-light/70 leading-relaxed mt-6">
+          Sandra entrenó a los guardaparques del Parque Nacional Predelta. Ahora guía a los visitantes de Finca Las Cuevas por senderos a través del bosque, con un recorrido de 2 a 3 horas accesible para cualquier persona.
+        </p>
+
+        <div class="mt-10 space-y-6">
+          {[
+            { title: 'Cueva del Tigre', desc: 'Formación natural icónica, punto más alto del recorrido.' },
+            { title: 'Bosque energético', desc: 'Un espacio de 3x3m donde las brújulas dejan de funcionar. Visitado por grupos de yoga.' },
+            { title: 'Flora y fauna nativa', desc: 'Árboles autóctonos, aves, y fauna local explicada en detalle por Sandra.' },
+            { title: 'Cascada', desc: 'Un rincón escondido dentro del bosque de la finca.' },
+          ].map(item => (
+            <div class="border-l-2 border-olive pl-5">
+              <h3 class="font-display text-lg text-charcoal font-semibold italic">{item.title}</h3>
+              <p class="text-charcoal-light/60 text-sm mt-1">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <div class="aspect-[3/4] overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=700&q=80"
+            alt="Sendero guiado"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+        <div class="grid grid-cols-3 gap-4">
+          <div class="bg-cream p-5 text-center">
+            <span class="font-display text-2xl italic text-wine">2-3</span>
+            <p class="text-charcoal-light/50 text-xs uppercase tracking-wider mt-1">Horas</p>
+          </div>
+          <div class="bg-cream p-5 text-center">
+            <span class="font-display text-2xl italic text-wine">$3K</span>
+            <p class="text-charcoal-light/50 text-xs uppercase tracking-wider mt-1">Por persona</p>
+          </div>
+          <div class="bg-cream p-5 text-center">
+            <span class="font-display text-2xl italic text-wine">Fácil</span>
+            <p class="text-charcoal-light/50 text-xs uppercase tracking-wider mt-1">Dificultad</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-6 lg:px-8 bg-cream text-center">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="font-display text-2xl md:text-3xl text-charcoal font-semibold italic">¿Querés hacer el recorrido?</h2>
+      <p class="text-charcoal-light/60 mt-3">Coordiná tu visita con Sandra y viví la experiencia del bosque nativo.</p>
+      <a
+        href="https://wa.me/5493000000000?text=Hola!%20Quiero%20consultar%20sobre%20el%20senderismo"
+        target="_blank"
+        rel="noopener"
+        class="inline-block mt-8 bg-wine text-cream px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-wine-dark transition-colors duration-300"
+      >
+        Reservar recorrido
+      </a>
+    </div>
+  </section>
+
+</Layout>

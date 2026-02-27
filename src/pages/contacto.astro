@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro'
+import PageHero from '../components/PageHero.astro'
+---
+
+<Layout title="Contacto" description="Contactá a Finca Las Cuevas. Consultá disponibilidad de cabañas y actividades.">
+
+  <PageHero
+    title="Contacto"
+    subtitle="Hablemos"
+    description="Escribinos y te contestamos enseguida."
+    image="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=1400&q=80"
+    imageAlt="Viñedo"
+  />
+
+  <section class="py-24 md:py-32 px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
+
+      <div class="space-y-8">
+        <a
+          href="https://wa.me/5493000000000?text=Hola!%20Quiero%20consultar%20sobre%20Finca%20Las%20Cuevas"
+          target="_blank"
+          rel="noopener"
+          class="block p-8 bg-cream hover:bg-sand-light transition-colors duration-300 group"
+        >
+          <h3 class="font-display text-xl text-charcoal font-semibold italic group-hover:text-wine transition-colors">WhatsApp</h3>
+          <p class="text-charcoal-light/50 text-sm mt-2">Escribinos y te respondemos al toque</p>
+        </a>
+
+        <a
+          href="https://instagram.com/fincalascuevas"
+          target="_blank"
+          rel="noopener"
+          class="block p-8 bg-cream hover:bg-sand-light transition-colors duration-300 group"
+        >
+          <h3 class="font-display text-xl text-charcoal font-semibold italic group-hover:text-wine transition-colors">Instagram</h3>
+          <p class="text-charcoal-light/50 text-sm mt-2">@fincalascuevas</p>
+        </a>
+
+        <div class="p-8 bg-cream">
+          <h3 class="font-display text-xl text-charcoal font-semibold italic">Ubicación</h3>
+          <p class="text-charcoal-light/50 text-sm mt-2">Cerca del Parque Nacional Predelta</p>
+          <p class="text-charcoal-light/50 text-sm">Entre Ríos, Argentina</p>
+          <p class="text-charcoal-light/50 text-sm mt-2">~1.5 horas desde Rosario</p>
+        </div>
+      </div>
+
+      <!-- Map placeholder -->
+      <div class="aspect-square md:aspect-auto bg-sand-light flex items-center justify-center min-h-[400px]">
+        <p class="text-earth/40 text-sm text-center px-8">Google Maps embed</p>
+      </div>
+
+    </div>
+  </section>
+
+</Layout>

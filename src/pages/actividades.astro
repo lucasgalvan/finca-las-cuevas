@@ -1,0 +1,85 @@
+---
+import Layout from '../layouts/Layout.astro'
+import PageHero from '../components/PageHero.astro'
+---
+
+<Layout title="Actividades" description="Kayak, pesca, ecoturismo, cabalgata y más en Finca Las Cuevas.">
+
+  <PageHero
+    title="Actividades"
+    subtitle="Aventura"
+    description="Siempre hay algo para hacer en Finca Las Cuevas."
+    image="https://images.unsplash.com/photo-1572697256681-3b428f0e44a0?w=1400&q=80"
+    imageAlt="Kayak en el río"
+  />
+
+  <!-- Activities -->
+  <section class="py-24 md:py-32 px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto space-y-0">
+
+      {[
+        {
+          title: 'Kayak por el delta',
+          desc: 'Gabriel tiene 20 kayaks y te lleva personalmente a recorrer el delta y las islas. Te sube a la lancha hasta el punto de partida y te guía por un recorrido increíble entre las islas del Paraná.',
+          image: 'https://images.unsplash.com/photo-1572697256681-3b428f0e44a0?w=800&q=80',
+        },
+        {
+          title: 'Pesca',
+          desc: 'La zona es un lugar privilegiado para la pesca. Disfrutá de la tranquilidad del río, rodeado de naturaleza en estado puro. Un plan perfecto para desconectar.',
+          image: 'https://images.unsplash.com/photo-1504279577054-acfeccf8fc52?w=800&q=80',
+        },
+        {
+          title: 'Ecoturismo y avistaje de aves',
+          desc: 'A pocos kilómetros se encuentra el Parque Nacional Predelta, hogar de más de 350 especies de aves. Recibe visitantes de Alemania, Brasil, Australia y todo el mundo.',
+          image: 'https://images.unsplash.com/photo-1470114716159-e389f8712fda?w=800&q=80',
+        },
+        {
+          title: 'Cabalgata',
+          desc: 'Recorré los alrededores de la finca a caballo. La zona está rodeada de campo, caballos y vacas. Un paisaje que te transporta.',
+          image: 'https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=800&q=80',
+        },
+        {
+          title: 'Safari fotográfico',
+          desc: 'Explorá los caminos rurales y capturá momentos únicos. La fauna y los paisajes son ideales para la fotografía de naturaleza.',
+          image: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=800&q=80',
+        },
+      ].map((activity, i) => (
+        <div class={`grid grid-cols-1 lg:grid-cols-2 ${i % 2 !== 0 ? 'lg:direction-rtl' : ''}`}>
+          <div class={`aspect-[4/3] lg:aspect-auto overflow-hidden ${i % 2 !== 0 ? 'lg:order-2' : ''}`}>
+            <img
+              src={activity.image}
+              alt={activity.title}
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <div class={`flex items-center px-6 lg:px-16 py-12 lg:py-20 ${i % 2 === 0 ? 'bg-cream' : 'bg-warm-white'}`}>
+            <div>
+              <h2 class="font-display text-2xl md:text-3xl text-charcoal font-semibold italic">{activity.title}</h2>
+              <div class="w-10 h-px bg-wine mt-4"></div>
+              <p class="text-charcoal-light/60 leading-relaxed mt-4">{activity.desc}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-6 lg:px-8 bg-cream text-center">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="font-display text-2xl md:text-3xl text-charcoal font-semibold italic">¿Qué actividad te gustaría hacer?</h2>
+      <p class="text-charcoal-light/60 mt-3">Contanos qué te interesa y te armamos la experiencia perfecta.</p>
+      <a
+        href="https://wa.me/5493000000000?text=Hola!%20Quiero%20consultar%20sobre%20actividades"
+        target="_blank"
+        rel="noopener"
+        class="inline-block mt-8 bg-wine text-cream px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-wine-dark transition-colors duration-300"
+      >
+        Consultanos
+      </a>
+    </div>
+  </section>
+
+</Layout>

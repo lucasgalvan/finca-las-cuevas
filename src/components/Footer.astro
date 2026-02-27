@@ -1,0 +1,52 @@
+---
+const currentYear = new Date().getFullYear()
+---
+
+<footer class="bg-charcoal text-sand/70">
+  <div class="max-w-6xl mx-auto px-6 lg:px-8 py-20">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+
+      <div class="md:col-span-5">
+        <h3 class="font-display text-3xl font-semibold text-cream italic">Finca Las Cuevas</h3>
+        <p class="mt-4 text-sand/50 leading-relaxed max-w-sm">
+          Viñedo, cabañas y ecoturismo en Entre Ríos. Donde la naturaleza y la tradición se encuentran.
+        </p>
+      </div>
+
+      <div class="md:col-span-3">
+        <h4 class="text-cream text-xs uppercase tracking-[0.2em] font-semibold mb-5">Explorá</h4>
+        <ul class="space-y-3">
+          <li><a href="/cabanas" class="hover:text-cream transition-colors duration-300">Cabañas</a></li>
+          <li><a href="/senderismo" class="hover:text-cream transition-colors duration-300">Senderismo</a></li>
+          <li><a href="/dia-de-campo" class="hover:text-cream transition-colors duration-300">Día de Campo</a></li>
+          <li><a href="/actividades" class="hover:text-cream transition-colors duration-300">Actividades</a></li>
+        </ul>
+      </div>
+
+      <div class="md:col-span-4">
+        <h4 class="text-cream text-xs uppercase tracking-[0.2em] font-semibold mb-5">Contacto</h4>
+        <ul class="space-y-3">
+          <li>
+            <a href="https://wa.me/5493000000000" target="_blank" rel="noopener" class="hover:text-cream transition-colors duration-300">
+              WhatsApp
+            </a>
+          </li>
+          <li>
+            <a href="https://instagram.com/fincalascuevas" target="_blank" rel="noopener" class="hover:text-cream transition-colors duration-300">
+              Instagram
+            </a>
+          </li>
+          <li class="text-sand/40">
+            Cerca del Parque Nacional Predelta, Entre Ríos
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="border-t border-white/5 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sand/30 text-sm">
+      <p>&copy; {currentYear} Finca Las Cuevas</p>
+      <p>por <a href="#" class="hover:text-sand/60 transition-colors">Koncepto</a></p>
+    </div>
+  </div>
+</footer>

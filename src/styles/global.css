@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  /* Warm earth palette inspired by vineyard/wine */
+  --color-wine: #5B2333;
+  --color-wine-light: #7A3B4E;
+  --color-wine-dark: #3D1523;
+  --color-grape: #6B4C6E;
+  --color-earth: #8B7355;
+  --color-earth-light: #A89279;
+  --color-sand: #D4C5A9;
+  --color-sand-light: #E8DFC9;
+  --color-cream: #F5F0E8;
+  --color-warm-white: #FDFBF7;
+  --color-olive: #5C6B4F;
+  --color-olive-light: #7A8B6A;
+  --color-charcoal: #2C2C2C;
+  --color-charcoal-light: #4A4A4A;
+
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-charcoal);
+    background-color: var(--color-warm-white);
+    text-wrap: pretty;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+  }
+}

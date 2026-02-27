@@ -1,0 +1,25 @@
+---
+interface Props {
+  title: string
+  subtitle?: string
+  description?: string
+  image: string
+  imageAlt?: string
+}
+
+const { title, subtitle, description, image, imageAlt = '' } = Astro.props
+---
+
+<section class="relative h-[60vh] min-h-[400px] flex items-end overflow-hidden">
+  <img
+    src={image}
+    alt={imageAlt}
+    class="absolute inset-0 w-full h-full object-cover"
+  />
+  <div class="absolute inset-0 bg-charcoal/40"></div>
+  <div class="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-8 pb-12 md:pb-16">
+    {subtitle && <span class="text-cream/60 text-xs uppercase tracking-[0.3em] font-medium">{subtitle}</span>}
+    <h1 class="font-display text-4xl md:text-6xl text-cream font-semibold italic mt-2">{title}</h1>
+    {description && <p class="text-cream/60 text-lg mt-3 max-w-lg">{description}</p>}
+  </div>
+</section>

@@ -1,0 +1,108 @@
+---
+import Layout from '../layouts/Layout.astro'
+import PageHero from '../components/PageHero.astro'
+---
+
+<Layout title="Día de Campo" description="Viví un día completo en Finca Las Cuevas: asado, vinos, viñedo y la mejor compañía.">
+
+  <PageHero
+    title="Día de Campo"
+    subtitle="Experiencia"
+    description="Un día completo en la finca: asado, vinos, viñedo y la mejor compañía."
+    image="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=1400&q=80"
+    imageAlt="Degustación de vino"
+  />
+
+  <!-- Timeline -->
+  <section class="py-24 md:py-32 px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto">
+      <span class="text-earth text-xs uppercase tracking-[0.25em] font-semibold">La experiencia</span>
+      <h2 class="font-display text-3xl md:text-4xl text-charcoal font-semibold italic mt-3">
+        Un día para recordar
+      </h2>
+
+      <div class="mt-14 space-y-0">
+        {[
+          {
+            step: '01',
+            title: 'Te buscamos',
+            desc: 'Te pasamos a buscar en nuestra traffic y arrancamos el viaje pintoresco por la ruta, cruzando el puente con vista al río y las islas.',
+          },
+          {
+            step: '02',
+            title: 'Llegada a la finca',
+            desc: 'Gabriel te recibe personalmente. Recorrés las instalaciones, conocés el viñedo y te acomodás para disfrutar del día.',
+          },
+          {
+            step: '03',
+            title: 'Recorrido por el viñedo',
+            desc: 'Gabriel te explica el proceso manual del vino, las variedades de uva — Chardonnay, Sauvignon Blanc, Marcelán — y la historia de la finca.',
+          },
+          {
+            step: '04',
+            title: 'Asado y degustación',
+            desc: 'Asado preparado por Gabriel, acompañado de empanadas caseras y degustación de vino Marcelán. Auténtico de principio a fin.',
+          },
+          {
+            step: '05',
+            title: 'Tarde libre',
+            desc: 'Pileta, árboles frutales, silencio. Descansá, recorré los alrededores, o simplemente desconectá rodeado de campo.',
+          },
+        ].map((item, i) => (
+          <div class="flex gap-8">
+            <div class="flex flex-col items-center shrink-0">
+              <span class="font-display text-xl italic text-wine w-10 text-center">{item.step}</span>
+              {i < 4 && <div class="w-px flex-1 bg-sand mt-3"></div>}
+            </div>
+            <div class="pb-14">
+              <h3 class="font-display text-xl text-charcoal font-semibold italic">{item.title}</h3>
+              <p class="text-charcoal-light/60 leading-relaxed mt-2">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="px-6 lg:px-8 pb-24 md:pb-32">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+        {[
+          'https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=500&q=80',
+          'https://images.unsplash.com/photo-1560493676-04071c5f467b?w=500&q=80',
+          'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=500&q=80',
+          'https://images.unsplash.com/photo-1528823872057-9c018a7a7553?w=500&q=80',
+          'https://images.unsplash.com/photo-1504279577054-acfeccf8fc52?w=500&q=80',
+          'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80',
+        ].map((img, i) => (
+          <div class="aspect-square overflow-hidden">
+            <img
+              src={img}
+              alt={`Momento en la finca ${i + 1}`}
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+              loading="lazy"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-6 lg:px-8 bg-cream text-center">
+    <div class="max-w-2xl mx-auto">
+      <h2 class="font-display text-2xl md:text-3xl text-charcoal font-semibold italic">¿Querés vivir el Día de Campo?</h2>
+      <p class="text-charcoal-light/60 mt-3">Coordiná fecha y grupo. Te organizamos todo.</p>
+      <a
+        href="https://wa.me/5493000000000?text=Hola!%20Quiero%20consultar%20sobre%20el%20Día%20de%20Campo"
+        target="_blank"
+        rel="noopener"
+        class="inline-block mt-8 bg-wine text-cream px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-wine-dark transition-colors duration-300"
+      >
+        Consultar
+      </a>
+    </div>
+  </section>
+
+</Layout>
