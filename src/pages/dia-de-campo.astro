@@ -3,12 +3,12 @@ import Layout from '../layouts/Layout.astro'
 import PageHero from '../components/PageHero.astro'
 ---
 
-<Layout title="Día de Campo" description="Viví un día completo en Finca Las Cuevas: asado, vinos, viñedo y la mejor compañía.">
+<Layout title="Día de Campo" description="Viví un día completo en Finca Las Cuevas: asado, vinos artesanales RIOMIO, recorrido por el viñedo y naturaleza.">
 
   <PageHero
     title="Día de Campo"
     subtitle="Experiencia"
-    description="Un día completo en la finca: asado, vinos, viñedo y la mejor compañía."
+    description="Un día completo en la finca: asado, vinos artesanales, viñedo y la mejor compañía."
     image="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=1400&q=80"
     imageAlt="Degustación de vino"
   />
@@ -26,27 +26,27 @@ import PageHero from '../components/PageHero.astro'
           {
             step: '01',
             title: 'Te buscamos',
-            desc: 'Te pasamos a buscar en nuestra traffic y arrancamos el viaje pintoresco por la ruta, cruzando el puente con vista al río y las islas.',
+            desc: 'Te pasamos a buscar y arrancamos el viaje pintoresco por la ruta, cruzando el puente con vista al río y las islas. El paisaje ya es parte de la experiencia.',
           },
           {
             step: '02',
-            title: 'Llegada a la finca',
-            desc: 'Gabriel te recibe personalmente. Recorrés las instalaciones, conocés el viñedo y te acomodás para disfrutar del día.',
+            title: 'Gabriel te recibe',
+            desc: 'El dueño te recibe personalmente. Recorrés las instalaciones, conocés el viñedo y te acomodás para disfrutar del día.',
           },
           {
             step: '03',
             title: 'Recorrido por el viñedo',
-            desc: 'Gabriel te explica el proceso manual del vino, las variedades de uva — Chardonnay, Sauvignon Blanc, Marcelán — y la historia de la finca.',
+            desc: 'Gabriel te explica el proceso artesanal del vino: la poda, la cosecha, la molienda, la fermentación. Chardonnay, Marcelán, Malbec, Syrah — cada variedad tiene su historia.',
           },
           {
             step: '04',
             title: 'Asado y degustación',
-            desc: 'Asado preparado por Gabriel, acompañado de empanadas caseras y degustación de vino Marcelán. Auténtico de principio a fin.',
+            desc: 'Asado preparado por Gabriel, empanadas caseras y degustación de vino RIOMIO. También podés probar el espumante artesanal que solo se sirve en la finca.',
           },
           {
             step: '05',
             title: 'Tarde libre',
-            desc: 'Pileta, árboles frutales, silencio. Descansá, recorré los alrededores, o simplemente desconectá rodeado de campo.',
+            desc: 'Pileta, árboles frutales, silencio. Descansá, recorré los alrededores entre caballos y vacas, o simplemente desconectá rodeado de campo.',
           },
         ].map((item, i) => (
           <div class="flex gap-8">
@@ -64,8 +64,36 @@ import PageHero from '../components/PageHero.astro'
     </div>
   </section>
 
+  <!-- Vendimia -->
+  <section class="bg-cream">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2">
+      <div class="aspect-square lg:aspect-auto overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=800&q=80" alt="Vendimia" class="w-full h-full object-cover" loading="lazy" />
+      </div>
+      <div class="flex items-center px-6 lg:px-16 py-16 lg:py-24">
+        <div>
+          <span class="text-earth text-xs uppercase tracking-[0.25em] font-semibold">Enero y Febrero</span>
+          <h2 class="font-display text-3xl md:text-4xl text-charcoal font-semibold italic mt-3 leading-tight">
+            Participá de la vendimia
+          </h2>
+          <p class="text-charcoal-light/70 leading-relaxed mt-5">
+            En pleno verano, podés sumarte a la cosecha de uvas y vivir de cerca todo el proceso: desde cortar los racimos hasta la molienda y el prensado. Una experiencia que hacemos con amigos y familia desde 2013.
+          </p>
+          <a
+            href="https://wa.me/5493414022323?text=Hola!%20Quiero%20consultar%20sobre%20la%20vendimia"
+            target="_blank"
+            rel="noopener"
+            class="inline-block mt-8 text-wine text-sm font-semibold uppercase tracking-[0.15em] border-b-2 border-wine/30 pb-1 hover:border-wine transition-colors duration-300"
+          >
+            Consultar fechas
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Gallery -->
-  <section class="px-6 lg:px-8 pb-24 md:pb-32">
+  <section class="px-6 lg:px-8 py-24 md:py-32">
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
         {[
@@ -74,15 +102,10 @@ import PageHero from '../components/PageHero.astro'
           'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=500&q=80',
           'https://images.unsplash.com/photo-1528823872057-9c018a7a7553?w=500&q=80',
           'https://images.unsplash.com/photo-1504279577054-acfeccf8fc52?w=500&q=80',
-          'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80',
+          'https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea?w=500&q=80',
         ].map((img, i) => (
           <div class="aspect-square overflow-hidden">
-            <img
-              src={img}
-              alt={`Momento en la finca ${i + 1}`}
-              class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
-              loading="lazy"
-            />
+            <img src={img} alt={`Momento en la finca ${i + 1}`} class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
           </div>
         ))}
       </div>
@@ -95,7 +118,7 @@ import PageHero from '../components/PageHero.astro'
       <h2 class="font-display text-2xl md:text-3xl text-charcoal font-semibold italic">¿Querés vivir el Día de Campo?</h2>
       <p class="text-charcoal-light/60 mt-3">Coordiná fecha y grupo. Te organizamos todo.</p>
       <a
-        href="https://wa.me/5493000000000?text=Hola!%20Quiero%20consultar%20sobre%20el%20Día%20de%20Campo"
+        href="https://wa.me/5493414022323?text=Hola!%20Quiero%20consultar%20sobre%20el%20Día%20de%20Campo"
         target="_blank"
         rel="noopener"
         class="inline-block mt-8 bg-wine text-cream px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-wine-dark transition-colors duration-300"
