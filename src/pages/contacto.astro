@@ -1,6 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import PageHero from '../components/PageHero.astro'
+
+const mapaSrc = 'https://www.google.com/maps?q=Las+Cuevas,+Diamante,+Entre+R%C3%ADos,+Argentina&z=12&output=embed'
 ---
 
 <Layout title="Contacto" description="Contactá a Finca Las Cuevas por WhatsApp o Instagram. Consultá disponibilidad y tarifas.">
@@ -9,54 +11,67 @@ import PageHero from '../components/PageHero.astro'
     title="Contacto"
     subtitle="Hablemos"
     description="Escribinos y te contestamos enseguida."
-    image="/img/vinedo-aereo.jpg"
-    imageAlt="Vista aérea del viñedo de Finca Las Cuevas"
+    image="/img/pareja-mate.jpg"
+    imageAlt="Pareja compartiendo un mate entre las hileras del viñedo al atardecer"
   />
 
-  <section class="py-24 md:py-32 px-6 lg:px-8">
-    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
+  <section class="bg-warm-white py-24 md:py-32 px-6 lg:px-8">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
-      <div class="space-y-8" data-stagger>
+      <div class="space-y-5" data-reveal-stagger>
         <a
           href="https://wa.me/5493414022323?text=Hola!%20Quiero%20consultar%20sobre%20Finca%20Las%20Cuevas"
           target="_blank"
           rel="noopener"
-          class="block p-8 bg-cream hover:bg-sand-light transition-colors duration-300 group"
-          data-animate
+          class="block p-8 bg-wine text-cream hover:bg-wine-dark transition-colors duration-300"
         >
-          <h3 class="font-display text-xl text-charcoal font-semibold italic group-hover:text-wine transition-colors">WhatsApp</h3>
-          <p class="text-charcoal-light/50 text-sm mt-2">341 402 2323</p>
-          <p class="text-charcoal-light/40 text-xs mt-1">Escribinos y te respondemos al toque</p>
+          <h2 class="font-display text-2xl font-semibold italic">WhatsApp</h2>
+          <p class="text-cream text-lg mt-2 font-medium">341 402 2323</p>
+          <p class="text-cream/85 text-sm mt-2">Escribinos y te respondemos al toque</p>
         </a>
 
         <a
           href="https://instagram.com/fincalascuevas"
           target="_blank"
           rel="noopener"
-          class="block p-8 bg-cream hover:bg-sand-light transition-colors duration-300 group"
-          data-animate
+          class="block p-8 bg-cream border border-sand/60 hover:border-wine transition-colors duration-300 group"
         >
-          <h3 class="font-display text-xl text-charcoal font-semibold italic group-hover:text-wine transition-colors">Instagram</h3>
-          <p class="text-charcoal-light/50 text-sm mt-2">@fincalascuevas</p>
+          <h2 class="font-display text-xl text-charcoal font-semibold italic group-hover:text-wine transition-colors">Instagram</h2>
+          <p class="text-charcoal-light text-sm mt-2">@fincalascuevas</p>
         </a>
 
-        <div data-animate class="p-8 bg-cream">
-          <h3 class="font-display text-xl text-charcoal font-semibold italic">Ubicación</h3>
-          <p class="text-charcoal-light/50 text-sm mt-2">Las Cuevas, Diamante</p>
-          <p class="text-charcoal-light/50 text-sm">Entre Ríos, Argentina</p>
-          <p class="text-charcoal-light/40 text-xs mt-3">Portal de entrada al Sitio Ramsar Delta del Paraná</p>
-          <p class="text-charcoal-light/40 text-xs">~1.5 horas desde Rosario</p>
+        <div class="p-8 bg-cream border border-sand/60">
+          <h2 class="font-display text-xl text-charcoal font-semibold italic">Cómo llegar</h2>
+          <p class="text-charcoal-light mt-3">Las Cuevas, Diamante<br>Entre Ríos, Argentina</p>
+          <ul class="text-charcoal-light text-sm mt-4 space-y-1.5">
+            <li>Aprox. 1 hora y media desde Rosario</li>
+            <li>A pasos del Parque Nacional Predelta</li>
+            <li>Portal de entrada al Sitio Ramsar Delta del Paraná</li>
+          </ul>
+          <p class="text-charcoal-light text-sm mt-4">
+            Si venís al Día de Campo, te pasamos a buscar. Consultanos por WhatsApp.
+          </p>
         </div>
 
-        <div data-animate class="p-8 bg-olive/10">
-          <h3 class="font-display text-xl text-charcoal font-semibold italic">Estamos abiertos todo el año</h3>
-          <p class="text-charcoal-light/50 text-sm mt-2">Consultanos tarifas y disponibilidad por WhatsApp.</p>
+        <div class="p-8 bg-olive/15 border border-olive/30">
+          <h2 class="font-display text-xl text-charcoal font-semibold italic">Abierto todo el año</h2>
+          <p class="text-charcoal-light text-sm mt-2">
+            Pet Friendly. Consultanos tarifas y disponibilidad por WhatsApp.
+          </p>
         </div>
       </div>
 
-      <!-- Map placeholder -->
-      <div class="aspect-square md:aspect-auto bg-sand-light flex items-center justify-center min-h-[400px]">
-        <p class="text-earth/40 text-sm text-center px-8">Google Maps embed</p>
+      <div data-reveal class="lg:sticky lg:top-28">
+        <iframe
+          src={mapaSrc}
+          title="Mapa de Las Cuevas, Diamante, Entre Ríos"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          class="w-full h-[420px] lg:h-[560px] border border-sand/60"
+        ></iframe>
+        <p class="text-charcoal-light text-xs mt-3">
+          Escribinos por WhatsApp y te pasamos la ubicación exacta con indicaciones.
+        </p>
       </div>
 
     </div>

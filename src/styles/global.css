@@ -1,18 +1,18 @@
 @import "tailwindcss";
+@import "lenis/dist/lenis.css";
 
 @theme {
-  /* Warm earth palette inspired by vineyard/wine */
   --color-wine: #5B2333;
-  --color-wine-light: #7A3B4E;
+  --color-wine-light: #9B5A70;
   --color-wine-dark: #3D1523;
   --color-grape: #6B4C6E;
-  --color-earth: #8B7355;
+  --color-earth: #6F5B3E;
   --color-earth-light: #A89279;
   --color-sand: #D4C5A9;
   --color-sand-light: #E8DFC9;
   --color-cream: #F5F0E8;
   --color-warm-white: #FDFBF7;
-  --color-olive: #5C6B4F;
+  --color-olive: #4C5A41;
   --color-olive-light: #7A8B6A;
   --color-charcoal: #2C2C2C;
   --color-charcoal-light: #4A4A4A;
@@ -23,7 +23,7 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
   }
 
   body {
@@ -36,80 +36,117 @@
   h1, h2, h3, h4, h5, h6 {
     text-wrap: balance;
   }
+
+  :focus-visible {
+    outline: 2px solid var(--color-wine);
+    outline-offset: 3px;
+  }
 }
 
-/* Scroll-triggered animations */
-[data-animate] {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+/* ──────────────────────────────────
+   Accesibilidad — skip link
+   ────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100%;
+  z-index: 60;
+  background: var(--color-cream);
+  color: var(--color-charcoal);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: top 0.2s ease;
 }
 
-[data-animate].is-visible {
-  opacity: 1;
-  transform: translateY(0);
+.skip-link:focus {
+  top: 1rem;
 }
 
-[data-animate="fade"] {
-  transform: none;
-  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+/* ──────────────────────────────────
+   Scrim para texto sobre imágenes
+   ────────────────────────────────── */
+.media-scrim::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(24, 20, 18, 0.82) 0%,
+    rgba(24, 20, 18, 0.55) 28%,
+    rgba(24, 20, 18, 0.15) 60%,
+    rgba(24, 20, 18, 0.05) 100%
+  );
 }
 
-[data-animate="fade"].is-visible {
-  opacity: 1;
-}
-
-[data-animate="scale"] {
-  opacity: 0;
-  transform: scale(0.95);
-  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-[data-animate="scale"].is-visible {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Image reveal */
-[data-animate="image"] {
-  opacity: 0;
-  transform: scale(1.04);
-  transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-[data-animate="image"].is-visible {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Stagger children */
-[data-stagger] > [data-animate]:nth-child(1) { transition-delay: 0ms; }
-[data-stagger] > [data-animate]:nth-child(2) { transition-delay: 100ms; }
-[data-stagger] > [data-animate]:nth-child(3) { transition-delay: 200ms; }
-[data-stagger] > [data-animate]:nth-child(4) { transition-delay: 300ms; }
-[data-stagger] > [data-animate]:nth-child(5) { transition-delay: 400ms; }
-[data-stagger] > [data-animate]:nth-child(6) { transition-delay: 500ms; }
-[data-stagger] > [data-animate]:nth-child(7) { transition-delay: 600ms; }
-[data-stagger] > [data-animate]:nth-child(8) { transition-delay: 700ms; }
-
-/* Hero entrance */
-[data-hero-animate] {
+/* ──────────────────────────────────
+   Estados iniciales de animación
+   Solo se aplican cuando el JS confirmó
+   que va a animar (clase en <html>).
+   Sin JS, todo el contenido es visible.
+   ────────────────────────────────── */
+.js-anim [data-reveal] {
   opacity: 0;
   transform: translateY(20px);
-  animation: heroReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-[data-hero-animate="1"] { animation-delay: 0.2s; }
-[data-hero-animate="2"] { animation-delay: 0.4s; }
-[data-hero-animate="3"] { animation-delay: 0.6s; }
-[data-hero-animate="4"] { animation-delay: 0.8s; }
+.js-anim [data-split-reveal] {
+  opacity: 0;
+}
+
+/* El contenedor recorta; la imagen se estira un 18% de más
+   y se centra, así el parallax (±4%) nunca descubre los bordes. */
+[data-parallax] {
+  overflow: hidden;
+  position: relative;
+}
+
+[data-parallax] img {
+  position: absolute;
+  inset: -9% 0;
+  width: 100%;
+  height: 118%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+/* ──────────────────────────────────
+   Entrada del hero
+   ────────────────────────────────── */
+[data-hero-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+[data-hero-reveal="1"] { animation-delay: 0.15s; }
+[data-hero-reveal="2"] { animation-delay: 0.3s; }
+[data-hero-reveal="3"] { animation-delay: 0.45s; }
+[data-hero-reveal="4"] { animation-delay: 0.6s; }
 
 @keyframes heroReveal {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* ──────────────────────────────────
+   Reduced motion
+   ────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  [data-reveal],
+  [data-split-reveal],
+  [data-hero-reveal],
+  .js-anim [data-reveal],
+  .js-anim [data-split-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
   }
 }

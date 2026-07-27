@@ -1,6 +1,26 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import PageHero from '../components/PageHero.astro'
+
+const comodidades = [
+  'Aire acondicionado',
+  'Calefacción',
+  'Pileta',
+  'Parrillero',
+  'Quincho',
+  'Cocina equipada',
+  'Ropa de cama y toallas',
+  'WiFi',
+]
+
+const galeria = [
+  { img: '/img/cabana-pilotes.jpg', alt: 'Cabaña de madera sobre pilotes entre los árboles', caption: 'Entre los árboles' },
+  { img: '/img/cabana-arbol.jpg', alt: 'Cabaña de madera junto a un árbol añoso', caption: 'Rodeadas de campo' },
+  { img: '/img/cabana-parrilla.jpg', alt: 'Cabaña con su parrillero de ladrillo', caption: 'Cada una con parrillero' },
+  { img: '/img/cabana-pileta.jpg', alt: 'Cabaña con la pileta y la vista al delta', caption: 'Pileta con vista al delta' },
+  { img: '/img/finca-vista-delta.jpg', alt: 'Vista del predio hacia el horizonte del delta', caption: 'El delta en el horizonte' },
+  { img: '/img/carro-cabanas.jpg', alt: 'Carro colmado de uva recién cosechada frente a las cabañas', caption: 'La vendimia, a metros' },
+]
 ---
 
 <Layout title="Cabañas" description="6 cabañas de madera equipadas en Finca Las Cuevas. Pet Friendly, pileta, quincho y parrillero. Abierto todo el año.">
@@ -9,76 +29,62 @@ import PageHero from '../components/PageHero.astro'
     title="Cabañas"
     subtitle="Alojamiento"
     description="6 cabañas de madera rodeadas de naturaleza, con todo lo que necesitás. Pet Friendly y abierto todo el año."
-    image="/img/cabana-exterior.jpg"
-    imageAlt="Cabaña de madera en Finca Las Cuevas"
+    image="/img/cabanas-hero.jpg"
+    imageAlt="Las cabañas de madera de Finca Las Cuevas en plena vendimia"
   />
 
-  <!-- Info -->
-  <section class="py-24 md:py-32 px-6 lg:px-8">
+  <section class="bg-warm-white py-24 md:py-32 px-6 lg:px-8">
     <div class="max-w-6xl mx-auto">
       <div class="max-w-2xl">
-        <span data-animate class="text-earth text-xs uppercase tracking-[0.25em] font-semibold">Comodidades</span>
-        <h2 data-animate class="font-display text-3xl md:text-4xl text-charcoal font-semibold italic mt-3">
+        <span data-reveal class="inline-block text-earth text-xs uppercase tracking-[0.25em] font-semibold">Comodidades</span>
+        <h2 data-split-reveal class="font-display text-3xl md:text-4xl text-charcoal font-semibold italic mt-3">
           Tu refugio en la naturaleza
         </h2>
-        <p data-animate class="text-charcoal-light/70 leading-relaxed mt-4">
-          Cada cabaña lleva el nombre de nuestra flora autóctona. Están equipadas para tu comodidad en cualquier época del año, con capacidad para 2, 4 y hasta 6 personas.
+        <p data-reveal class="text-charcoal-light leading-relaxed mt-5">
+          Cada cabaña lleva el nombre de nuestra flora autóctona. Están equipadas para tu comodidad en
+          cualquier época del año, con capacidad para 2, 4 y hasta 6 personas.
         </p>
       </div>
 
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-12" data-stagger>
-        {[
-          'Aire acondicionado',
-          'Calefacción',
-          'Pileta',
-          'Parrillero',
-          'Quincho',
-          'Cocina equipada',
-          'Ropa de cama y toallas',
-          'WiFi',
-        ].map(item => (
-          <div data-animate class="p-5 bg-cream">
+      <ul class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mt-12" data-reveal-stagger>
+        {comodidades.map(item => (
+          <li class="p-5 bg-cream border border-sand/50">
             <p class="text-charcoal text-sm font-medium">{item}</p>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
 
-      <div data-animate class="mt-6 p-5 bg-olive/10 inline-block">
-        <p class="text-olive text-sm font-semibold">Pet Friendly — Vení con tu mascota</p>
-      </div>
+      <p data-reveal class="mt-6 inline-block p-5 bg-olive/15 border border-olive/30 text-olive text-sm font-semibold">
+        Pet Friendly — Vení con tu mascota
+      </p>
 
-      <!-- Cabañas grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-12" data-stagger>
-        {[
-          '/img/cabana-exterior.jpg',
-          '/img/cabanas-vista.jpg',
-          '/img/vinedo-hileras.jpg',
-          '/img/senderismo-bosque.jpg',
-          '/img/kayak-humedal.jpg',
-          '/img/vendimia-gabriel.jpg',
-        ].map((img, i) => (
-          <div data-animate="scale" class="group relative aspect-[4/3] overflow-hidden">
-            <img src={img} alt={`Cabaña ${i + 1}`} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-            <div class="absolute inset-0 bg-charcoal/20 group-hover:bg-charcoal/30 transition-colors duration-500"></div>
-            <div class="absolute bottom-0 left-0 p-5">
-              <h3 class="font-display text-xl text-cream font-semibold italic">Cabaña {i + 1}</h3>
-            </div>
-          </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-14" data-reveal-stagger>
+        {galeria.map(item => (
+          <figure class="group relative aspect-[4/3] overflow-hidden media-scrim m-0" data-parallax>
+            <img src={item.img} alt={item.alt} class="transition-transform duration-700 group-hover:scale-[1.04]" loading="lazy" />
+            <figcaption class="absolute bottom-0 left-0 right-0 p-5 z-10">
+              <span class="font-display text-xl text-cream font-semibold italic">{item.caption}</span>
+            </figcaption>
+          </figure>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="py-20 px-6 lg:px-8 bg-cream text-center">
+  <section class="bg-cream py-20 md:py-24 px-6 lg:px-8 text-center">
     <div class="max-w-2xl mx-auto">
-      <h2 data-animate class="font-display text-2xl md:text-3xl text-charcoal font-semibold italic">¿Querés reservar una cabaña?</h2>
-      <p data-animate class="text-charcoal-light/60 mt-3">Escribinos por WhatsApp y te contamos disponibilidad y tarifas.</p>
+      <h2 data-split-reveal class="font-display text-3xl md:text-4xl text-charcoal font-semibold italic">
+        ¿Querés reservar una cabaña?
+      </h2>
+      <p data-reveal class="text-charcoal-light mt-4 text-lg">
+        Escribinos por WhatsApp y te contamos disponibilidad y tarifas.
+      </p>
       <a
+        data-reveal
         href="https://wa.me/5493414022323?text=Hola!%20Quiero%20consultar%20disponibilidad%20de%20cabañas"
         target="_blank"
         rel="noopener"
-        class="inline-block mt-8 bg-wine text-cream px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-wine-dark transition-colors duration-300"
+        class="inline-block mt-8 bg-wine text-cream px-9 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-wine-dark transition-colors duration-300"
       >
         Consultar disponibilidad
       </a>

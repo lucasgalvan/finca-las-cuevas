@@ -1,6 +1,43 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import PageHero from '../components/PageHero.astro'
+
+const pasos = [
+  {
+    step: '01',
+    title: 'Te buscamos',
+    desc: 'Te pasamos a buscar y arrancamos el viaje pintoresco por la ruta, cruzando el puente con vista al río y las islas. El paisaje ya es parte de la experiencia.',
+  },
+  {
+    step: '02',
+    title: 'Gabriel te recibe',
+    desc: 'El dueño te recibe personalmente. Recorrés las instalaciones, conocés el viñedo y te acomodás para disfrutar del día.',
+  },
+  {
+    step: '03',
+    title: 'Recorrido por el viñedo',
+    desc: 'Gabriel te explica el proceso artesanal del vino: la poda, la cosecha, la molienda, la fermentación. Chardonnay, Marcelán, Malbec, Syrah — cada variedad tiene su historia.',
+  },
+  {
+    step: '04',
+    title: 'Asado y degustación',
+    desc: 'Asado preparado por Gabriel, empanadas caseras y degustación de vino RIOMIO. También podés probar el espumante artesanal que solo se sirve en la finca.',
+  },
+  {
+    step: '05',
+    title: 'Tarde libre',
+    desc: 'Pileta, árboles frutales, silencio. Descansá, recorré los alrededores entre caballos y vacas, o simplemente desconectá rodeado de campo.',
+  },
+]
+
+const galeria = [
+  { img: '/img/familia-vendimia.jpg', alt: 'Familia y amigos vendimiando entre las hileras con el perro de la finca' },
+  { img: '/img/madre-hijo.jpg', alt: 'Madre e hijo sonriendo abrazados junto al cajón de vendimia' },
+  { img: '/img/vendimia-general.jpg', alt: 'Vendimia grupal entre las hileras del viñedo' },
+  { img: '/img/nene-racimo.jpg', alt: 'Nene mostrando orgulloso un racimo de uva junto a una canasta llena' },
+  { img: '/img/pareja-mate-cajon.jpg', alt: 'Pareja riendo mientras comparte un mate junto a las uvas cosechadas' },
+  { img: '/img/uvas-contraluz.jpg', alt: 'Mano sosteniendo un racimo de uvas doradas a contraluz del atardecer' },
+]
 ---
 
 <Layout title="Día de Campo" description="Viví un día completo en Finca Las Cuevas: asado, vinos artesanales RIOMIO, recorrido por el viñedo y naturaleza.">
@@ -9,81 +46,56 @@ import PageHero from '../components/PageHero.astro'
     title="Día de Campo"
     subtitle="Experiencia"
     description="Un día completo en la finca: asado, vinos artesanales, viñedo y la mejor compañía."
-    image="/img/dia-campo-visita.jpg"
-    imageAlt="Visitantes en el viñedo de Finca Las Cuevas"
+    image="/img/vendimia-grupo-hero.jpg"
+    imageAlt="Grupo cosechando uvas entre las hileras del viñedo con luz dorada"
   />
 
-  <!-- Timeline -->
-  <section class="py-24 md:py-32 px-6 lg:px-8">
+  <section class="bg-warm-white py-24 md:py-32 px-6 lg:px-8">
     <div class="max-w-3xl mx-auto">
-      <span data-animate class="text-earth text-xs uppercase tracking-[0.25em] font-semibold">La experiencia</span>
-      <h2 data-animate class="font-display text-3xl md:text-4xl text-charcoal font-semibold italic mt-3">
+      <span data-reveal class="inline-block text-earth text-xs uppercase tracking-[0.25em] font-semibold">La experiencia</span>
+      <h2 data-split-reveal class="font-display text-3xl md:text-4xl text-charcoal font-semibold italic mt-3">
         Un día para recordar
       </h2>
 
-      <div class="mt-14 space-y-0">
-        {[
-          {
-            step: '01',
-            title: 'Te buscamos',
-            desc: 'Te pasamos a buscar y arrancamos el viaje pintoresco por la ruta, cruzando el puente con vista al río y las islas. El paisaje ya es parte de la experiencia.',
-          },
-          {
-            step: '02',
-            title: 'Gabriel te recibe',
-            desc: 'El dueño te recibe personalmente. Recorrés las instalaciones, conocés el viñedo y te acomodás para disfrutar del día.',
-          },
-          {
-            step: '03',
-            title: 'Recorrido por el viñedo',
-            desc: 'Gabriel te explica el proceso artesanal del vino: la poda, la cosecha, la molienda, la fermentación. Chardonnay, Marcelán, Malbec, Syrah — cada variedad tiene su historia.',
-          },
-          {
-            step: '04',
-            title: 'Asado y degustación',
-            desc: 'Asado preparado por Gabriel, empanadas caseras y degustación de vino RIOMIO. También podés probar el espumante artesanal que solo se sirve en la finca.',
-          },
-          {
-            step: '05',
-            title: 'Tarde libre',
-            desc: 'Pileta, árboles frutales, silencio. Descansá, recorré los alrededores entre caballos y vacas, o simplemente desconectá rodeado de campo.',
-          },
-        ].map((item, i) => (
-          <div data-animate class="flex gap-8">
+      <ol class="mt-14 space-y-0" data-reveal-stagger>
+        {pasos.map((item, i) => (
+          <li class="flex gap-6 md:gap-8">
             <div class="flex flex-col items-center shrink-0">
-              <span class="font-display text-xl italic text-wine w-10 text-center">{item.step}</span>
-              {i < 4 && <div class="w-px flex-1 bg-sand mt-3"></div>}
+              <span class="font-display text-xl italic text-wine w-10 text-center" aria-hidden="true">{item.step}</span>
+              {i < pasos.length - 1 && <div class="w-px flex-1 bg-sand mt-3"></div>}
             </div>
-            <div class="pb-14">
+            <div class="pb-12">
               <h3 class="font-display text-xl text-charcoal font-semibold italic">{item.title}</h3>
-              <p class="text-charcoal-light/60 leading-relaxed mt-2">{item.desc}</p>
+              <p class="text-charcoal-light leading-relaxed mt-2">{item.desc}</p>
             </div>
-          </div>
+          </li>
         ))}
-      </div>
+      </ol>
     </div>
   </section>
 
-  <!-- Vendimia -->
   <section class="bg-cream">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2">
-      <div class="aspect-square lg:aspect-auto overflow-hidden">
-        <img src="/img/vendimia-uvas.jpg" alt="Cosecha de uvas Marcelán" class="w-full h-full object-cover" loading="lazy" />
+    <div class="grid grid-cols-1 lg:grid-cols-2">
+      <div class="aspect-[4/3] lg:aspect-auto lg:min-h-[560px] relative" data-parallax>
+        <img src="/img/vendimia-cajon.jpg" alt="Mujer llevando un cajón de uvas cosechadas por la hilera del viñedo a la hora dorada" loading="lazy" />
       </div>
-      <div class="flex items-center px-6 lg:px-16 py-16 lg:py-24">
-        <div>
-          <span data-animate class="text-earth text-xs uppercase tracking-[0.25em] font-semibold">Enero y Febrero</span>
-          <h2 data-animate class="font-display text-3xl md:text-4xl text-charcoal font-semibold italic mt-3 leading-tight">
+      <div class="flex items-center px-6 lg:px-16 xl:px-20 py-16 lg:py-24">
+        <div class="max-w-xl">
+          <span data-reveal class="inline-block text-earth text-xs uppercase tracking-[0.25em] font-semibold">Enero y Febrero</span>
+          <h2 data-split-reveal class="font-display text-3xl md:text-4xl text-charcoal font-semibold italic mt-3 leading-tight">
             Participá de la vendimia
           </h2>
-          <p data-animate class="text-charcoal-light/70 leading-relaxed mt-5">
-            En pleno verano, podés sumarte a la cosecha de uvas y vivir de cerca todo el proceso: desde cortar los racimos hasta la molienda y el prensado. Una experiencia que hacemos con amigos y familia desde 2013.
+          <p data-reveal class="text-charcoal-light leading-relaxed mt-6">
+            En pleno verano, podés sumarte a la cosecha de uvas y vivir de cerca todo el proceso: desde
+            cortar los racimos hasta la molienda y el prensado. Una experiencia que hacemos con amigos y
+            familia desde 2013.
           </p>
           <a
+            data-reveal
             href="https://wa.me/5493414022323?text=Hola!%20Quiero%20consultar%20sobre%20la%20vendimia"
             target="_blank"
             rel="noopener"
-            class="inline-block mt-8 text-wine text-sm font-semibold uppercase tracking-[0.15em] border-b-2 border-wine/30 pb-1 hover:border-wine transition-colors duration-300"
+            class="inline-block mt-8 text-wine text-sm font-semibold uppercase tracking-[0.15em] border-b-2 border-wine/40 pb-1 hover:border-wine transition-colors duration-300"
           >
             Consultar fechas
           </a>
@@ -92,36 +104,35 @@ import PageHero from '../components/PageHero.astro'
     </div>
   </section>
 
-  <!-- Gallery -->
-  <section class="px-6 lg:px-8 py-24 md:py-32">
+  <section class="bg-warm-white px-6 lg:px-8 py-24 md:py-32">
     <div class="max-w-6xl mx-auto">
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-2" data-stagger>
-        {[
-          '/img/vendimia-gabriel.jpg',
-          '/img/vendimia-cosecha.jpg',
-          '/img/gabriel-botella.jpg',
-          '/img/vendimia-joven.jpg',
-          '/img/vinedo-hileras.jpg',
-          '/img/gabriel-vinedo.jpg',
-        ].map((img, i) => (
-          <div data-animate="scale" class="aspect-square overflow-hidden">
-            <img src={img} alt={`Momento en la finca ${i + 1}`} class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
+      <h2 data-split-reveal class="font-display text-2xl md:text-3xl text-charcoal font-semibold italic mb-10">
+        Momentos de la finca
+      </h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3" data-reveal-stagger>
+        {galeria.map(item => (
+          <div class="aspect-square relative overflow-hidden" data-parallax>
+            <img src={item.img} alt={item.alt} class="transition-transform duration-700 hover:scale-[1.04]" loading="lazy" />
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="py-20 px-6 lg:px-8 bg-cream text-center">
+  <section class="bg-cream py-20 md:py-24 px-6 lg:px-8 text-center">
     <div class="max-w-2xl mx-auto">
-      <h2 data-animate class="font-display text-2xl md:text-3xl text-charcoal font-semibold italic">¿Querés vivir el Día de Campo?</h2>
-      <p class="text-charcoal-light/60 mt-3">Coordiná fecha y grupo. Te organizamos todo.</p>
+      <h2 data-split-reveal class="font-display text-3xl md:text-4xl text-charcoal font-semibold italic">
+        ¿Querés vivir el Día de Campo?
+      </h2>
+      <p data-reveal class="text-charcoal-light mt-4 text-lg">
+        Coordiná fecha y grupo. Te organizamos todo.
+      </p>
       <a
+        data-reveal
         href="https://wa.me/5493414022323?text=Hola!%20Quiero%20consultar%20sobre%20el%20Día%20de%20Campo"
         target="_blank"
         rel="noopener"
-        class="inline-block mt-8 bg-wine text-cream px-8 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-wine-dark transition-colors duration-300"
+        class="inline-block mt-8 bg-wine text-cream px-9 py-4 text-sm font-semibold uppercase tracking-wider hover:bg-wine-dark transition-colors duration-300"
       >
         Consultar
       </a>

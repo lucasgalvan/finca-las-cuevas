@@ -10,16 +10,22 @@ interface Props {
 const { title, subtitle, description, image, imageAlt = '' } = Astro.props
 ---
 
-<section class="relative h-[60vh] min-h-[400px] flex items-end overflow-hidden">
-  <img
-    src={image}
-    alt={imageAlt}
-    class="absolute inset-0 w-full h-full object-cover"
-  />
-  <div class="absolute inset-0 bg-charcoal/40"></div>
-  <div class="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-8 pb-12 md:pb-16">
-    {subtitle && <span data-hero-animate="1" class="text-cream/60 text-xs uppercase tracking-[0.3em] font-medium">{subtitle}</span>}
-    <h1 data-hero-animate="2" class="font-display text-4xl md:text-6xl text-cream font-semibold italic mt-2">{title}</h1>
-    {description && <p data-hero-animate="3" class="text-cream/60 text-lg mt-3 max-w-lg">{description}</p>}
+<section class="relative h-[68vh] min-h-[420px] flex items-end overflow-hidden bg-charcoal media-scrim" data-parallax>
+  <img src={image} alt={imageAlt} fetchpriority="high" />
+
+  <div class="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-8 pb-14 md:pb-20">
+    {subtitle && (
+      <span data-hero-reveal="1" class="text-sand-light text-xs uppercase tracking-[0.3em] font-semibold">
+        {subtitle}
+      </span>
+    )}
+    <h1 data-hero-reveal="2" class="font-display text-4xl md:text-6xl text-cream font-semibold italic mt-3">
+      {title}
+    </h1>
+    {description && (
+      <p data-hero-reveal="3" class="text-cream/95 text-lg mt-4 max-w-xl leading-relaxed">
+        {description}
+      </p>
+    )}
   </div>
 </section>
