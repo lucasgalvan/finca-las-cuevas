@@ -126,16 +126,25 @@
   }
 
   /* ---------- video del hero ----------
-     autoplay + loop; si el navegador bloquea la reproducción automática
-     queda el poster, que ya es una imagen válida del lugar. */
+     Elegimos la versión según el ancho: la vertical pesa una fracción y
+     llena la pantalla del celular sin recortar. Con prefers-reduced-motion
+     no se carga ningún video: queda el poster.
+     El src se asigna acá (no en el HTML) para no descargar los dos. */
   var hero = document.querySelector('.hero__video');
   if (hero) {
-    if (reduce) {
-      hero.removeAttribute('autoplay');
-      hero.pause();
-    } else {
-      var play = hero.play();
-      if (play && typeof play.catch === 'function') play.catch(function () { /* poster */ });
+    var esMovil = matchMedia('(max-width: 768px)').matches;
+    var posterMovil = hero.getAttribute('data-poster-movil');
+    if (esMovil && posterMovil) hero.setAttribute('poster', posterMovil);
+
+    if (!reduce) {
+      var fuente = hero.getAttribute(esMovil ? 'data-src-movil' : 'data-src-escritorio');
+      if (fuente) {
+        hero.setAttribute('preload', 'auto');
+        hero.src = fuente;
+        hero.load();
+        var play = hero.play();
+        if (play && typeof play.catch === 'function') play.catch(function () { /* queda el poster */ });
+      }
     }
   }
 

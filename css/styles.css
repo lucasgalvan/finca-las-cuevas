@@ -239,11 +239,33 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
    No usar una regla genérica .scrim>* acá: pisaría esos position y el texto
    se saldría de lugar. */
 
+/* ============ 7b. MEDIA VERTICAL ============ */
+/* Casi todo el material de la finca es de celular o drone en retrato.
+   Metido en un contenedor apaisado, object-fit:cover le corta la cabeza
+   y los pies. Estas clases le dan al contenedor la proporción de la foto
+   para que se vea entera. */
+.media-v{aspect-ratio:3/4}
+.media-v916{aspect-ratio:9/16}
+
+/* En columnas de escritorio la foto ya tiene alto propio; ahí manda el
+   layout y la proporción vuelve a ser automática. */
+@media (min-width:1025px){
+  .split__media.media-v,
+  .split__media.media-v916{aspect-ratio:auto}
+}
+
+/* Punto de interés del recorte: por defecto centro, pero varias fotos
+   tienen el sujeto arriba (interiores con techo, drone con horizonte). */
+.pos-top>img{object-position:50% 22%}
+.pos-bottom>img{object-position:50% 78%}
+
 /* ============ 8. PARALLAX ============ */
 /* La imagen lleva sobre-escaneo fijo (118%) y el desplazamiento es de ±4%,
    así el movimiento nunca descubre los bordes del contenedor. */
 .parallax{position:relative;overflow:hidden}
-.parallax>img{
+/* `img` y no `>img`: varios bloques envuelven la imagen en <picture>
+   para servir un recorte distinto en móvil. */
+.parallax img{
   position:absolute;inset:-9% 0;
   width:100%;height:118%;
   object-fit:cover;
@@ -278,6 +300,15 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   display:flex;align-items:flex-end;
   overflow:hidden;background:var(--charcoal);
 }
+/* Scrim propio, más denso que el general: estas fotos tienen zonas muy
+   claras (pasto al sol, cielo) justo donde va la etiqueta y el título. */
+.pagehero::after{
+  background:linear-gradient(to top,
+    rgba(24,20,18,.92) 0%,
+    rgba(24,20,18,.78) 30%,
+    rgba(24,20,18,.45) 58%,
+    rgba(24,20,18,.18) 100%);
+}
 .pagehero__inner{position:relative;z-index:1;width:100%;padding-bottom:var(--s8)}
 .pagehero__title{font-size:var(--text-4xl);color:var(--cream);margin-top:var(--s3)}
 .pagehero__lead{
@@ -299,6 +330,16 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .exp--narrow{grid-column:span 5}
 .exp>img{transition:transform .7s ease}
 .exp:hover>img{transform:scale(1.04)}
+/* Estas tarjetas llevan el texto sobre fotos muy dispares (galpón blanco a
+   pleno sol, cielo del atardecer). El scrim general no alcanza: acá va uno
+   más denso para que el título se lea sobre cualquier foto. */
+.exp::after{
+  background:linear-gradient(to top,
+    rgba(24,20,18,.92) 0%,
+    rgba(24,20,18,.74) 38%,
+    rgba(24,20,18,.34) 68%,
+    rgba(24,20,18,.10) 100%);
+}
 .exp__body{position:absolute;inset:auto 0 0 0;padding:var(--s6);z-index:1}
 .exp__kicker{
   display:block;font-size:var(--text-xs);font-weight:600;
@@ -359,6 +400,9 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .galeria--cuadrada{grid-template-columns:repeat(3,1fr);gap:var(--s3)}
 .galeria figure{position:relative;margin:0;overflow:hidden;aspect-ratio:4/3}
 .galeria--cuadrada figure{aspect-ratio:1/1}
+/* Para fotos de celular en retrato: el contenedor acompaña la proporción. */
+.galeria--vertical{grid-template-columns:repeat(4,1fr)}
+.galeria--vertical figure{aspect-ratio:3/4}
 .galeria img{transition:transform .7s ease}
 .galeria figure:hover img{transform:scale(1.04)}
 .galeria figcaption{
@@ -510,6 +554,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .nav__toggle{display:block}
   .split,.actividad,.dos-col,.contacto{grid-template-columns:1fr}
   .split__media,.actividad__media{min-height:0;aspect-ratio:4/3}
+  /* Las fotos verticales conservan su proporción: si acá quedara 4/3,
+     object-fit:cover les cortaría la mitad del alto. Va después de la
+     regla de arriba a propósito, para ganarle en la cascada. */
+  .split__media.media-v,.actividad__media.media-v{aspect-ratio:3/4}
+  .split__media.media-v916,.actividad__media.media-v916{aspect-ratio:9/16}
   .split--rev .split__media,.actividad:nth-child(even) .actividad__media{order:0}
   .split__body,.actividad__body{padding:var(--s8) var(--s5)}
   .split--rev .split__body{justify-content:flex-start}
@@ -521,15 +570,42 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 @media (max-width:768px){
   :root{--s9:64px;--s8:48px}
+
+  /* Heroes: en lugar de una altura en vh (que da una caja muy angosta y
+     alta, y obliga a recortar la foto a la mitad), la caja toma 3:4 —
+     la misma proporción del recorte que se sirve en móvil. Así entra
+     entera y no se pierde nada. */
+  .hero,.pagehero{height:auto;aspect-ratio:3/4;min-height:0;max-height:88dvh}
+  .hero__inner{padding-bottom:var(--s7)}
+  .pagehero__inner{padding-bottom:var(--s6)}
+
   .experiencias{grid-auto-rows:auto;gap:var(--s3)}
   .exp--wide,.exp--narrow{grid-column:span 12;aspect-ratio:4/3}
+  /* Tarjetas con foto vertical: proporción propia. */
+  .exp.media-v{aspect-ratio:3/4}
   .galeria{grid-template-columns:repeat(2,1fr)}
+  .galeria--vertical{grid-template-columns:repeat(2,1fr)}
   .comodidades{grid-template-columns:repeat(2,1fr)}
   .metricas{gap:var(--s6)}
   .footer__grid{grid-template-columns:1fr;gap:var(--s7)}
   .hero__actions{flex-direction:column;align-items:stretch;max-width:22rem}
   .banda__frase{font-size:var(--text-2xl)}
   .paso{gap:var(--s4)}
+
+  /* Zona táctil cómoda (mínimo 44px): el texto no cambia de tamaño,
+     lo que se agranda es el área tocable. */
+  .footer__links a,.nav__mobile a{display:block;padding-block:var(--s3)}
+  .link-underline{padding-block:var(--s3) var(--s2);min-height:44px}
+  .nav__logo{display:flex;align-items:center;min-height:44px}
+  .kicker{font-size:var(--text-sm)}
+
+  /* La franja panorámica usa su recorte vertical en móvil. */
+  .banda{height:auto;aspect-ratio:3/4;max-height:80dvh}
+}
+
+/* Móvil apaisado: la pantalla es baja, un hero 3:4 no entra. */
+@media (max-width:900px) and (orientation:landscape){
+  .hero,.pagehero{aspect-ratio:auto;height:100dvh;min-height:320px}
 }
 
 @media (max-width:420px){

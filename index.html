@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=1">
+<link rel="stylesheet" href="css/styles.css?v=4">
 </head>
 <body id="top">
 
@@ -59,8 +59,14 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero">
-    <video class="hero__video" src="video/hero-vendimia.mp4" poster="video/hero-vendimia-poster.jpg"
-           autoplay muted loop playsinline preload="auto" aria-label="Vendimia en Finca Las Cuevas"></video>
+    <!-- El src lo elige main.js según el ancho: en celular carga una versión
+         vertical y liviana (1,6 MB) en vez de la horizontal de 5,6 MB, que
+         además se veía recortada al 26%. Sin JS queda el poster. -->
+    <video class="hero__video" poster="video/hero-vendimia-poster.jpg"
+           data-src-movil="video/hero-vendimia-movil.mp4"
+           data-poster-movil="video/hero-vendimia-movil-poster.jpg"
+           data-src-escritorio="video/hero-vendimia.mp4"
+           muted loop playsinline preload="none" aria-label="Vendimia en Finca Las Cuevas"></video>
     <div class="hero__scrim"></div>
     <div class="hero__inner">
       <div class="wrap">
@@ -88,6 +94,27 @@
     </div>
   </section>
 
+  <!-- ============ DESDE EL AIRE ============ -->
+  <section class="dark">
+    <div class="split">
+      <div class="split__media media-v916 parallax">
+        <img src="img/drone-finca-atardecer.jpg" alt="Vista aérea de Finca Las Cuevas al atardecer: el viñedo, el monte y el delta del Paraná en el horizonte" loading="lazy">
+      </div>
+      <div class="split__body">
+        <div>
+          <span class="kicker reveal">Dónde estamos</span>
+          <h2 class="title reveal" style="margin-top:var(--s3);color:var(--cream)">La finca, desde el aire</h2>
+          <p class="body reveal" style="margin-top:var(--s5)">
+            Las hileras del viñedo, el monte nativo y, en el horizonte, el delta del Paraná.
+            Estamos en Las Cuevas, Diamante, a pasos del Parque Nacional Predelta y a una hora
+            y media de Rosario.
+          </p>
+          <a class="link-underline reveal" style="margin-top:var(--s6)" href="contacto.html">Cómo llegar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ EXPERIENCIAS ============ -->
   <section class="section">
     <div class="wrap">
@@ -95,7 +122,7 @@
       <h2 class="title reveal" style="margin-top:var(--s3)">Cuatro formas de vivir la finca</h2>
 
       <div class="experiencias reveal-stagger">
-        <a class="exp exp--wide scrim parallax" href="cabanas.html">
+        <a class="exp exp--wide media-v scrim parallax" href="cabanas.html">
           <img src="img/cabana-arbol.jpg" alt="Cabaña de madera junto a un árbol añoso en Finca Las Cuevas" loading="lazy">
           <div class="exp__body">
             <span class="exp__kicker">Alojamiento</span>
@@ -104,7 +131,7 @@
           </div>
         </a>
 
-        <a class="exp exp--narrow scrim parallax" href="senderismo.html">
+        <a class="exp exp--narrow media-v scrim parallax" href="senderismo.html">
           <img src="img/senderismo-rocas.jpg" alt="Senderistas explorando las rocas del monte nativo" loading="lazy">
           <div class="exp__body">
             <span class="exp__kicker">Naturaleza</span>
@@ -136,7 +163,10 @@
 
   <!-- ============ FRANJA PANORÁMICA ============ -->
   <section class="banda scrim parallax">
-    <img src="img/vendimia-cielo.jpg" alt="Vendimia grupal entre las hileras del viñedo bajo un cielo amplio" loading="lazy">
+    <picture>
+      <source media="(max-width: 768px)" srcset="img/vendimia-cielo-movil.jpg">
+      <img src="img/vendimia-cielo.jpg" alt="Vendimia grupal entre las hileras del viñedo bajo un cielo amplio" loading="lazy">
+    </picture>
     <div class="banda__inner">
       <div class="wrap">
         <p class="banda__frase reveal">En enero y febrero, la finca se llena de gente cosechando.</p>
@@ -148,7 +178,7 @@
   <!-- ============ GABRIEL ============ -->
   <section class="dark">
     <div class="split">
-      <div class="split__media parallax">
+      <div class="split__media media-v916 parallax">
         <img src="img/gabriel-sombrero.jpg" alt="Gabriel Basaldella con su sombrero de paja y su perro entre las vides y los rosales" loading="lazy">
       </div>
       <div class="split__body">
@@ -173,7 +203,7 @@
   <!-- ============ RIOMIO ============ -->
   <section class="wine">
     <div class="split split--rev">
-      <div class="split__media parallax">
+      <div class="split__media media-v parallax">
         <img src="img/racimo-cielo.jpg" alt="Mano sosteniendo un racimo de uva tinta contra el cielo azul" loading="lazy">
       </div>
       <div class="split__body">
@@ -255,6 +285,6 @@
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
-<script src="js/main.js?v=1"></script>
+<script src="js/main.js?v=4"></script>
 </body>
 </html>
