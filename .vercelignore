@@ -1,0 +1,16 @@
+# Material fuente: originales de fotos y videos. No se publica.
+Las Cuevas web_NUEVAS FOTOS Y VIDEOS/
+instagram-photos/
+instagram-captions.txt
+fincalascuevas/
+
+# Herramientas de agentes y restos del stack anterior
+.agent/
+.agents/
+.claude/
+skills-lock.json
+node_modules/
+dist/
+src/
+.astro/
+.vscode/
