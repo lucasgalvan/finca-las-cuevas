@@ -1,10 +1,19 @@
-# build output
-dist/
-# generated types
-.astro/
+# Material fuente (no se publica): originales de fotos y videos
+Las Cuevas web_NUEVAS FOTOS Y VIDEOS/
+instagram-photos/
+instagram-captions.txt
+fincalascuevas/
 
-# dependencies
+# Herramientas de agentes
+.agent/
+.agents/
+.claude/
+skills-lock.json
+
+# Restos del stack anterior
 node_modules/
+dist/
+.astro/
 
 # logs
 npm-debug.log*
@@ -12,14 +21,15 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-
-# environment variables
+# variables de entorno
 .env
 .env.production
 
-# macOS-specific files
+# macOS
 .DS_Store
 
-# jetbrains setting folder
+# jetbrains
 .idea/
+
+# vercel
 .vercel
