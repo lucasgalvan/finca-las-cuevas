@@ -325,6 +325,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 }
 .exp{
   position:relative;display:block;overflow:hidden;text-decoration:none;
+  /* En escritorio la altura la fija grid-auto-rows. Si acá se colara el
+     aspect-ratio de .media-v, la tarjeta crecería más que su fila y se
+     montaría sobre la de abajo. La proporción vertical solo se aplica en
+     móvil, donde las filas son automáticas (ver sección 24). */
+  aspect-ratio:auto;
 }
 .exp--wide{grid-column:span 7}
 .exp--narrow{grid-column:span 5}
