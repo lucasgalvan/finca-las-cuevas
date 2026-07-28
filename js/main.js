@@ -133,18 +133,56 @@
   var hero = document.querySelector('.hero__video');
   if (hero) {
     var esMovil = matchMedia('(max-width: 768px)').matches;
-    var posterMovil = hero.getAttribute('data-poster-movil');
-    if (esMovil && posterMovil) hero.setAttribute('poster', posterMovil);
+    // El HTML trae el poster de móvil (el más liviano) para no penalizar al
+    // celular; en pantallas grandes lo cambiamos por el horizontal.
+    var posterEscritorio = hero.getAttribute('data-poster-escritorio');
+    if (!esMovil && posterEscritorio) hero.setAttribute('poster', posterEscritorio);
 
     if (!reduce) {
       var fuente = hero.getAttribute(esMovil ? 'data-src-movil' : 'data-src-escritorio');
       if (fuente) {
-        hero.setAttribute('preload', 'auto');
-        hero.src = fuente;
-        hero.load();
-        var play = hero.play();
-        if (play && typeof play.catch === 'function') play.catch(function () { /* queda el poster */ });
+        // Se carga recién después del primer pintado: el poster ya se ve, y
+        // así el video no compite por ancho de banda con el texto y las
+        // imágenes de la primera pantalla.
+        var arrancar = function () {
+          hero.setAttribute('preload', 'auto');
+          hero.src = fuente;
+          hero.load();
+          var play = hero.play();
+          if (play && typeof play.catch === 'function') play.catch(function () { /* queda el poster */ });
+        };
+        var cuandoHayaTiempo = window.requestIdleCallback || function (fn) { setTimeout(fn, 200); };
+        if (document.readyState === 'complete') cuandoHayaTiempo(arrancar, { timeout: 2500 });
+        else window.addEventListener('load', function () { cuandoHayaTiempo(arrancar, { timeout: 2500 }); });
       }
+    }
+  }
+
+  /* ---------- mapa bajo demanda ----------
+     El embed de Google pesa unos 430 KB de scripts. Lo insertamos cuando
+     está por entrar en pantalla; si no hay IntersectionObserver, al toque. */
+  var mapa = document.querySelector('[data-mapa]');
+  if (mapa) {
+    var insertar = function () {
+      if (mapa.dataset.listo) return;
+      mapa.dataset.listo = '1';
+      var f = document.createElement('iframe');
+      f.src = mapa.getAttribute('data-mapa');
+      f.title = 'Mapa de Las Cuevas, Diamante, Entre Ríos';
+      f.loading = 'lazy';
+      f.referrerPolicy = 'no-referrer-when-downgrade';
+      mapa.appendChild(f);
+    };
+    if ('IntersectionObserver' in window) {
+      var mio = new IntersectionObserver(function (entries) {
+        if (entries.some(function (e) { return e.isIntersecting; })) {
+          insertar();
+          mio.disconnect();
+        }
+      }, { rootMargin: '300px' });
+      mio.observe(mapa);
+    } else {
+      insertar();
     }
   }
 

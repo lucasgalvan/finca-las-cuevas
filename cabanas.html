@@ -16,7 +16,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css?v=5">
+<link rel="preload" as="image" media="(max-width: 768px)" imagesrcset="img/cabanas-hero-movil-400.webp 400w, img/cabanas-hero-movil-640.webp 640w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" media="(min-width: 769px)" imagesrcset="img/cabanas-hero-400.webp 400w, img/cabanas-hero-800.webp 800w, img/cabanas-hero-1200.webp 1200w, img/cabanas-hero-2400.webp 2400w" imagesizes="100vw" fetchpriority="high">
+<link rel="stylesheet" href="css/styles.css?v=9">
 </head>
 <body id="top">
 
@@ -59,8 +61,10 @@
 
   <section class="pagehero scrim parallax">
     <picture>
-      <source media="(max-width: 768px)" srcset="img/cabanas-hero-movil.jpg">
-      <img src="img/cabanas-hero.jpg" alt="Las cabañas de madera de Finca Las Cuevas en plena vendimia" fetchpriority="high">
+      <source media="(max-width: 768px)" type="image/webp" srcset="img/cabanas-hero-movil-400.webp 400w, img/cabanas-hero-movil-640.webp 640w" sizes="100vw">
+      <source media="(max-width: 768px)" srcset="img/cabanas-hero-movil-400.jpg 400w, img/cabanas-hero-movil-640.jpg 640w" sizes="100vw">
+      <source type="image/webp" srcset="img/cabanas-hero-400.webp 400w, img/cabanas-hero-800.webp 800w, img/cabanas-hero-1200.webp 1200w, img/cabanas-hero-2400.webp 2400w" sizes="100vw">
+      <img src="img/cabanas-hero.jpg" srcset="img/cabanas-hero-400.jpg 400w, img/cabanas-hero-800.jpg 800w, img/cabanas-hero-1200.jpg 1200w, img/cabanas-hero.jpg 2400w" sizes="100vw" width="2400" height="1350" alt="Las cabañas de madera de Finca Las Cuevas en plena vendimia" fetchpriority="high">
     </picture>
     <div class="pagehero__inner">
       <div class="wrap">
@@ -103,19 +107,31 @@
 
       <div class="galeria galeria--vertical reveal-stagger">
         <figure class="scrim parallax">
-          <img src="img/cabana-dormitorio.jpg" alt="Interior de la cabaña: cama matrimonial y cucheta en madera, con aire acondicionado y ventilador de techo" loading="lazy">
+          <picture>
+      <source type="image/webp" srcset="img/cabana-dormitorio-400.webp 400w, img/cabana-dormitorio-800.webp 800w, img/cabana-dormitorio-1200.webp 1200w, img/cabana-dormitorio-1500.webp 1500w" sizes="(max-width: 768px) 50vw, 25vw">
+      <img src="img/cabana-dormitorio.jpg" srcset="img/cabana-dormitorio-400.jpg 400w, img/cabana-dormitorio-800.jpg 800w, img/cabana-dormitorio-1200.jpg 1200w, img/cabana-dormitorio.jpg 1500w" sizes="(max-width: 768px) 50vw, 25vw" width="1500" height="2000" alt="Interior de la cabaña: cama matrimonial y cucheta en madera, con aire acondicionado y ventilador de techo" loading="lazy">
+    </picture>
           <figcaption>Cama y cucheta</figcaption>
         </figure>
         <figure class="scrim parallax">
-          <img src="img/cabana-ventana.jpg" alt="Dormitorio de la cabaña con ventana y cortinas, todo revestido en madera" loading="lazy">
+          <picture>
+      <source type="image/webp" srcset="img/cabana-ventana-400.webp 400w, img/cabana-ventana-800.webp 800w, img/cabana-ventana-1200.webp 1200w, img/cabana-ventana-1500.webp 1500w" sizes="(max-width: 768px) 50vw, 25vw">
+      <img src="img/cabana-ventana.jpg" srcset="img/cabana-ventana-400.jpg 400w, img/cabana-ventana-800.jpg 800w, img/cabana-ventana-1200.jpg 1200w, img/cabana-ventana.jpg 1500w" sizes="(max-width: 768px) 50vw, 25vw" width="1500" height="2000" alt="Dormitorio de la cabaña con ventana y cortinas, todo revestido en madera" loading="lazy">
+    </picture>
           <figcaption>Luz natural</figcaption>
         </figure>
         <figure class="scrim parallax">
-          <img src="img/cabana-cucheta.jpg" alt="Cucheta de madera junto a la cama principal, con ventilador de techo y aire acondicionado" loading="lazy">
+          <picture>
+      <source type="image/webp" srcset="img/cabana-cucheta-400.webp 400w, img/cabana-cucheta-800.webp 800w, img/cabana-cucheta-1200.webp 1200w, img/cabana-cucheta-1500.webp 1500w" sizes="(max-width: 768px) 50vw, 25vw">
+      <img src="img/cabana-cucheta.jpg" srcset="img/cabana-cucheta-400.jpg 400w, img/cabana-cucheta-800.jpg 800w, img/cabana-cucheta-1200.jpg 1200w, img/cabana-cucheta.jpg 1500w" sizes="(max-width: 768px) 50vw, 25vw" width="1500" height="2000" alt="Cucheta de madera junto a la cama principal, con ventilador de techo y aire acondicionado" loading="lazy">
+    </picture>
           <figcaption>Hasta 6 personas</figcaption>
         </figure>
         <figure class="scrim parallax">
-          <img src="img/cabana-bano.jpg" alt="Baño privado de la cabaña con ducha, inodoro, bidet y lavatorio, con techo de madera" loading="lazy">
+          <picture>
+      <source type="image/webp" srcset="img/cabana-bano-400.webp 400w, img/cabana-bano-800.webp 800w, img/cabana-bano-1200.webp 1200w, img/cabana-bano-1500.webp 1500w" sizes="100vw">
+      <img src="img/cabana-bano.jpg" srcset="img/cabana-bano-400.jpg 400w, img/cabana-bano-800.jpg 800w, img/cabana-bano-1200.jpg 1200w, img/cabana-bano.jpg 1500w" sizes="100vw" width="1500" height="2000" alt="Baño privado de la cabaña con ducha, inodoro, bidet y lavatorio, con techo de madera" loading="lazy">
+    </picture>
           <figcaption>Baño privado</figcaption>
         </figure>
       </div>
@@ -124,27 +140,33 @@
 
       <div class="galeria galeria--vertical reveal-stagger" style="margin-top:var(--s5)">
         <figure class="scrim parallax">
-          <img src="img/cabana-pilotes.jpg" alt="Cabaña de madera sobre pilotes entre los árboles" loading="lazy">
+          <img src="img/cabana-pilotes.jpg" srcset="img/cabana-pilotes-400.jpg 400w, img/cabana-pilotes-800.jpg 800w, img/cabana-pilotes-1200.jpg 1200w, img/cabana-pilotes.jpg 2160w" sizes="(max-width: 768px) 50vw, 25vw" width="2160" height="3840" alt="Cabaña de madera sobre pilotes entre los árboles" loading="lazy">
           <figcaption>Entre los árboles</figcaption>
         </figure>
         <figure class="scrim parallax">
-          <img src="img/cabana-arbol.jpg" alt="Cabaña de madera junto a un árbol añoso" loading="lazy">
+          <img src="img/cabana-arbol.jpg" srcset="img/cabana-arbol-400.jpg 400w, img/cabana-arbol-800.jpg 800w, img/cabana-arbol-1200.jpg 1200w, img/cabana-arbol.jpg 2160w" sizes="(max-width: 768px) 50vw, 25vw" width="2160" height="3840" alt="Cabaña de madera junto a un árbol añoso" loading="lazy">
           <figcaption>Rodeadas de campo</figcaption>
         </figure>
         <figure class="scrim parallax">
-          <img src="img/cabana-parrilla.jpg" alt="Cabaña con su parrillero de ladrillo" loading="lazy">
+          <img src="img/cabana-parrilla.jpg" srcset="img/cabana-parrilla-400.jpg 400w, img/cabana-parrilla-800.jpg 800w, img/cabana-parrilla-1200.jpg 1200w, img/cabana-parrilla.jpg 2160w" sizes="(max-width: 768px) 50vw, 25vw" width="2160" height="3840" alt="Cabaña con su parrillero de ladrillo" loading="lazy">
           <figcaption>Cada una con parrillero</figcaption>
         </figure>
         <figure class="scrim parallax">
-          <img src="img/cabana-pileta.jpg" alt="Cabaña con la pileta y la vista al delta" loading="lazy">
+          <img src="img/cabana-pileta.jpg" srcset="img/cabana-pileta-400.jpg 400w, img/cabana-pileta-800.jpg 800w, img/cabana-pileta-1200.jpg 1200w, img/cabana-pileta.jpg 2160w" sizes="100vw" width="2160" height="3840" alt="Cabaña con la pileta y la vista al delta" loading="lazy">
           <figcaption>Pileta con vista al delta</figcaption>
         </figure>
         <figure class="scrim parallax">
-          <img src="img/drone-finca-vinedo.jpg" alt="Vista aérea del predio con el viñedo y el delta en el horizonte" loading="lazy">
+          <picture>
+      <source type="image/webp" srcset="img/drone-finca-vinedo-400.webp 400w, img/drone-finca-vinedo-800.webp 800w, img/drone-finca-vinedo-1200.webp 1200w, img/drone-finca-vinedo-1400.webp 1400w" sizes="100vw">
+      <img src="img/drone-finca-vinedo.jpg" srcset="img/drone-finca-vinedo-400.jpg 400w, img/drone-finca-vinedo-800.jpg 800w, img/drone-finca-vinedo-1200.jpg 1200w, img/drone-finca-vinedo.jpg 1400w" sizes="100vw" width="1400" height="2488" alt="Vista aérea del predio con el viñedo y el delta en el horizonte" loading="lazy">
+    </picture>
           <figcaption>El delta en el horizonte</figcaption>
         </figure>
         <figure class="scrim parallax">
-          <img src="img/carro-cabanas.jpg" alt="Carro colmado de uva recién cosechada frente a las cabañas" loading="lazy">
+          <picture>
+      <source type="image/webp" srcset="img/carro-cabanas-400.webp 400w, img/carro-cabanas-800.webp 800w, img/carro-cabanas-1200.webp 1200w" sizes="100vw">
+      <img src="img/carro-cabanas.jpg" srcset="img/carro-cabanas-400.jpg 400w, img/carro-cabanas-800.jpg 800w, img/carro-cabanas.jpg 1200w" sizes="100vw" width="1200" height="1600" alt="Carro colmado de uva recién cosechada frente a las cabañas" loading="lazy">
+    </picture>
           <figcaption>La vendimia, a metros</figcaption>
         </figure>
       </div>
@@ -204,6 +226,6 @@
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
-<script src="js/main.js?v=5"></script>
+<script src="js/main.js?v=9"></script>
 </body>
 </html>
