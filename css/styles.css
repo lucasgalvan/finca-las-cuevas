@@ -514,6 +514,23 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   border-top:1px solid rgba(212,197,169,.2);
   font-size:var(--text-sm);color:rgba(212,197,169,.8);
 }
+/* La firma del estudio sí se subraya: sin eso no se lee como enlace. */
+.footer__base a{
+  color:var(--sand);
+  text-decoration:underline;
+  text-decoration-color:rgba(212,197,169,.45);
+  text-underline-offset:3px;
+}
+.footer__base a:hover{color:var(--cream);text-decoration-color:currentColor}
+/* En celular el botón flotante de WhatsApp queda justo encima de la
+   esquina inferior derecha: apilamos la firma y dejamos aire para que
+   el enlace no quede debajo del botón (era intocable). */
+@media (max-width:640px){
+  .footer__base{
+    flex-direction:column;align-items:flex-start;gap:var(--s2);
+    padding-bottom:calc(var(--s8) + 56px);
+  }
+}
 
 /* ============ 22. FAB WHATSAPP ============ */
 .fab{
