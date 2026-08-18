@@ -193,5 +193,24 @@
 </a>
 
 <script src="js/main.js?v=12"></script>
+
+<style>.js .reveal,.js .reveal-stagger>*,.js .hero-in{opacity:1!important;transform:none!important}</style>
+<script>
+window.addEventListener('load',function(){setTimeout(function(){
+ var hl=function(el){var cs=getComputedStyle(el);return (parseFloat(cs.lineHeight)-parseFloat(cs.fontSize))/2;};
+ var out={vw:innerWidth};
+ var punto=document.querySelector('.punto'),h3=punto.querySelector('h3'),p=punto.querySelector('p');
+ var rh=h3.getBoundingClientRect(),rp=p.getBoundingClientRect();
+ out.punto={hfs:getComputedStyle(h3).fontSize,hlh:getComputedStyle(h3).lineHeight,pfs:getComputedStyle(p).fontSize,plh:getComputedStyle(p).lineHeight,mt:getComputedStyle(p).marginTop,boxGap:+(rp.top-rh.bottom).toFixed(2),optical:+(rp.top-rh.bottom+hl(h3)+hl(p)).toFixed(2)};
+ var ps=document.querySelectorAll('.punto');
+ out.betweenPuntos=+(ps[1].getBoundingClientRect().top-ps[0].getBoundingClientRect().bottom).toFixed(2);
+ var puntos=document.querySelector('.puntos'),fichas=document.querySelector('.fichas');
+ var bodyP=document.querySelector('.dos-col p.body'),img=document.querySelector('.dos-col .parallax');
+ out.puntos={mt:getComputedStyle(puntos).marginTop,gapFromBody:+(puntos.getBoundingClientRect().top-bodyP.getBoundingClientRect().bottom).toFixed(2)};
+ out.fichas={mt:getComputedStyle(fichas).marginTop,gapFromImg:+(fichas.getBoundingClientRect().top-img.getBoundingClientRect().bottom).toFixed(2)};
+ out.cols=[].map.call(document.querySelectorAll('.dos-col > div'),function(c){var r=c.getBoundingClientRect();return {h:+r.height.toFixed(1),top:+r.top.toFixed(1),bottom:+r.bottom.toFixed(1)};});
+ var d=document.createElement('div');d.id='MEASURE';d.textContent=JSON.stringify(out);document.body.appendChild(d);
+},600);});
+</script>
 </body>
 </html>

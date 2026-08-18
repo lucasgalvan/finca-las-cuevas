@@ -81,6 +81,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .dark{background:var(--charcoal);color:var(--cream)}
 .wine{background:var(--wine-dark);color:var(--cream)}
 .cream{background:var(--surface)}
+.olive{background:var(--olive);color:var(--cream)}
 .stack>*+*{margin-top:var(--s4)}
 .measure{max-width:62ch}
 
@@ -102,14 +103,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   font-weight:600;
   color:var(--earth);
 }
-.dark .kicker,.wine .kicker,.hero .kicker{color:var(--sand)}
+.dark .kicker,.wine .kicker,.olive .kicker,.hero .kicker{color:var(--sand-light)}
 .title{font-size:var(--text-4xl)}
 .title--lg{font-size:var(--text-5xl)}
 .title--sm{font-size:var(--text-2xl)}
 .lead{font-size:var(--text-lg);color:var(--muted);line-height:1.7}
-.dark .lead,.wine .lead{color:rgba(245,240,232,.9)}
+.dark .lead,.wine .lead,.olive .lead{color:rgba(245,240,232,.92)}
 .body{color:var(--muted);line-height:1.75}
-.dark .body,.wine .body{color:rgba(245,240,232,.9)}
+.dark .body,.wine .body,.olive .body{color:rgba(245,240,232,.92)}
 .rule{width:48px;height:1px;background:var(--wine);margin-top:var(--s4)}
 
 /* ============ 5. BOTONES ============ */
@@ -375,6 +376,20 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .split--rev .split__media{order:2}
 .split--rev .split__body{order:1;justify-content:flex-end}
 
+/* El texto de los bloques a sangre se alinea con la misma columna que el
+   contenido dentro de .wrap. Sin esto arranca a 64px del borde mientras el
+   resto de la página arranca a ~168px, y el ojo lo ve saltar al scrollear. */
+@media (min-width:1025px){
+  .split--rev .split__body,
+  .actividad:nth-child(even) .actividad__body{
+    padding-left:max(var(--s8), calc((100vw - var(--wrap)) / 2 + var(--s5)));
+  }
+  .split:not(.split--rev) .split__body,
+  .actividad:not(:nth-child(even)) .actividad__body{
+    padding-right:max(var(--s8), calc((100vw - var(--wrap)) / 2 + var(--s5)));
+  }
+}
+
 /* ============ 13. MÉTRICAS ============ */
 .metricas{display:flex;flex-wrap:wrap;gap:var(--s8);margin-top:var(--s7)}
 .metrica dd{
@@ -388,18 +403,22 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* ============ 14. COMODIDADES ============ */
 .comodidades{
-  display:grid;grid-template-columns:repeat(4,1fr);
+  display:grid;grid-template-columns:repeat(3,1fr);
   gap:var(--s3);margin-top:var(--s7);
 }
 .comodidades li{
   padding:var(--s5);background:var(--surface);border:1px solid var(--line);
   font-size:var(--text-sm);font-weight:500;
 }
-.aviso{
-  display:inline-block;margin-top:var(--s5);padding:var(--s5);
-  background:rgba(76,90,65,.15);border:1px solid rgba(76,90,65,.3);
-  color:var(--olive);font-size:var(--text-sm);font-weight:600;
+.comodidades__destacado{
+  grid-column:1/-1;
+  padding:var(--s5);
+  background:rgba(76,90,65,.16);
+  border:1px solid rgba(76,90,65,.32);
+  color:var(--olive);
+  font-size:var(--text-sm);font-weight:600;
 }
+
 
 /* ============ 15. GALERÍA ============ */
 .galeria{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s4);margin-top:var(--s7)}
@@ -448,6 +467,14 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .fichas{display:grid;grid-template-columns:1fr 1fr;gap:var(--s4);margin-top:var(--s4)}
 .ficha{padding:var(--s5);background:var(--surface);border:1px solid var(--line);text-align:center}
 .ficha b{display:block;font-family:var(--display);font-style:italic;font-weight:600;font-size:var(--text-xl);color:var(--wine)}
+.ficha--ancha{
+  grid-column:1/-1;
+  background:rgba(76,90,65,.16);
+  border-color:rgba(76,90,65,.32);
+  color:var(--olive);
+  font-size:var(--text-sm);font-weight:600;
+}
+
 .ficha span{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
 .lista-check{margin-top:var(--s6)}
 .lista-check li{display:flex;gap:var(--s3);font-size:var(--text-sm);color:rgba(245,240,232,.88)}
@@ -477,11 +504,12 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .tarjeta ul li+li{margin-top:var(--s1)}
 .mapa{position:sticky;top:calc(var(--nav-h) + var(--s5))}
 .mapa__caja{
-  width:100%;height:560px;border:1px solid var(--line);
+  width:100%;
+  height:clamp(420px, calc(100dvh - 11rem), 780px);
+  border:1px solid var(--line);
   background:var(--surface-2);
 }
 .mapa iframe{width:100%;height:100%;border:0;display:block}
-.mapa__caja > iframe{height:560px}
 .mapa p{margin-top:var(--s3);font-size:var(--text-xs);color:var(--muted)}
 
 /* ============ 20. CTA FINAL ============ */
@@ -489,6 +517,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .cta__inner{max-width:38rem;margin-inline:auto}
 .cta p{margin-top:var(--s5)}
 .cta .btn{margin-top:var(--s7)}
+.nota-cta{margin-top:var(--s5);font-size:var(--text-sm);color:var(--muted)}
 
 /* ============ 21. FOOTER ============ */
 .footer{background:var(--charcoal);color:var(--sand)}
@@ -592,7 +621,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .split--rev .split__body{justify-content:flex-start}
   .dos-col{gap:var(--s8)}
   .mapa{position:static}
-  .mapa iframe{height:420px}
+  .mapa__caja{height:420px}
   .comodidades{grid-template-columns:repeat(3,1fr)}
 }
 
@@ -608,7 +637,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   .pagehero__inner{padding-bottom:var(--s6)}
 
   .experiencias{grid-auto-rows:auto;gap:var(--s3)}
-  .exp--wide,.exp--narrow{grid-column:span 12;aspect-ratio:4/3}
+  .exp--wide,.exp--narrow,.exp--medio{grid-column:span 12;aspect-ratio:4/3}
   /* Tarjetas con foto vertical: proporción propia. */
   .exp.media-v{aspect-ratio:3/4}
   .galeria{grid-template-columns:repeat(2,1fr)}
