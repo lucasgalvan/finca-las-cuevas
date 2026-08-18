@@ -256,8 +256,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 /* Punto de interés del recorte: por defecto centro, pero varias fotos
    tienen el sujeto arriba (interiores con techo, drone con horizonte). */
-.pos-top>img{object-position:50% 22%}
-.pos-bottom>img{object-position:50% 78%}
+.pos-top img{object-position:50% 22%}
+.pos-bottom img{object-position:50% 78%}
 
 /* ============ 8. PARALLAX ============ */
 /* La imagen lleva sobre-escaneo fijo (118%) y el desplazamiento es de ±4%,
@@ -333,6 +333,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 }
 .exp--wide{grid-column:span 7}
 .exp--narrow{grid-column:span 5}
+.exp--medio{grid-column:span 6}
 .exp>img{transition:transform .7s ease}
 .exp:hover>img{transform:scale(1.04)}
 /* Estas tarjetas llevan el texto sobre fotos muy dispares (galpón blanco a
