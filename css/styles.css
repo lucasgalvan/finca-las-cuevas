@@ -430,7 +430,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .galeria--vertical figure{aspect-ratio:3/4}
 .galeria img{transition:transform .7s ease}
 .galeria figure:hover img{transform:scale(1.04)}
-.galeria figcaption{
+.galeria figcaption{line-height:1.2;text-wrap:balance;
   position:absolute;inset:auto 0 0 0;padding:var(--s5);z-index:1;
   font-family:var(--display);font-style:italic;font-weight:600;
   font-size:var(--text-lg);color:var(--cream);
@@ -446,6 +446,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 }
 .paso__linea{width:1px;flex:1;background:var(--line);margin-top:var(--s3)}
 .paso__body{padding-bottom:var(--s7)}
+.paso:last-child .paso__body{padding-bottom:0}
 .paso__body h3{font-size:var(--text-xl)}
 .paso__body p{margin-top:var(--s2);color:var(--muted);line-height:1.75}
 
